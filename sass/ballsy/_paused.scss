@@ -1,0 +1,37 @@
+.gameMenu__paused {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  @include flexIt();
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  &__buttons {
+    width: 0vw;
+    height: 30vh;
+    margin-bottom: 10vh;
+    color: transparent;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    > * {
+      margin-bottom: 2vh;
+      width: 100%;
+      height: 50%;
+      @include flexIt();
+      font-size: 4vw;
+      @include for-phone {
+        font-size: 6vw;
+      }
+    }
+  }
+}
+
+.gameMenu__paused.active {
+  visibility: visible;
+  > :first-child {
+    width: 40vw;
+    color: black;
+    opacity: 1;
+  }
+}

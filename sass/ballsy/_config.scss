@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#ballsyBody {
+  overflow: hidden;
+  touch-action: none;
+}
+
+// * {
+//   outline: 1px solid #f00 !important;
+// }
+
+@mixin flexIt($dir: column, $justCont: center, $alignIt: center) {
+  display: flex;
+  justify-content: $justCont;
+  align-items: $alignIt;
+  flex-direction: $dir;
+}
+
+@mixin centerDiv () {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin for-phone {
+  @media (max-width: 500px) { @content; }
+}

@@ -1,0 +1,89 @@
+.settingsToggle {
+    // position: absolute;
+    // top: calc($Sites-PaddingBlock-Mobile + 5px);
+    // right: $Sites-PaddingInline-Mobile;
+    @include flexIt();
+
+    gap: 8px;
+}
+
+.toggle {
+    --width: 50px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+
+    display: inline-block;
+    cursor: pointer;
+}
+
+.toggle--input {
+    display: none;
+}
+
+.toggle--container {
+    padding: 5% 10%;
+    @include flexIt($justCont: space-between);
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background-color: var(--background);
+    border: 1px solid var(--foreground);
+    // transition: background 0.2s;
+
+    >* {
+        width: calc((var(--width) / 2) * 0.5)
+    }
+}
+
+// .toggle--input:checked~.toggle--container {
+//     background: #009578;
+// }
+
+.toggle--container::after {
+    content: "";
+    position: absolute;
+    // top: -1;
+    left: -2px;
+    height: calc(var(--height) + 2px);
+    width: calc(var(--height) + 2px);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border: 1px solid black;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.toggle--input:checked~.toggle--container::after {
+    transform: translateX((var(--height)));
+}
+
+@include for-phone-and-phone-landscape {
+    .settingsToggle {
+        // right: unset;
+        // left: $Sites-PaddingInline-Mobile;
+
+        // gap: 5px;
+    }
+    .toggle {
+        --width: 40px;
+        // --height: calc(var(--width) / 2);
+        // --border-radius: calc(var(--height) / 2);
+    
+        // display: inline-block;
+        cursor: pointer;
+    }
+}
+
+#icon_sun {
+    fill: #FBB040;
+}
+
+#icon_moon {
+    fill: var(--foreground);
+}
+
+#icon_de,
+#icon_en {
+    fill: var(--foreground);
+}

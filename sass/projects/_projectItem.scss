@@ -1,0 +1,116 @@
+.projects--projectContainer--projectItem {
+    text-align: center;
+    @include flexIt($dir: column, $justCont: space-between);
+    background-color: var(--foreground);
+    border-radius: 8px;
+    border: 1px solid var(--background);
+    width: min-content;
+    align-self: stretch; //to stretch all to the highest item
+    cursor: pointer;
+
+    transition: all 150ms ease-in-out;
+
+    &--img {
+        width: 15vw; //This determines the width of projectItem
+        max-width: 288px; //Based on fullHD
+        height: fit-content;
+        object-fit: cover;
+        border-radius: 8px;
+        // border: 1px solid var(--background);
+    }
+
+    &--heading {
+        white-space: nowrap;
+        font-size: 1px;
+        color: var(--background);
+        margin-block: 1rem;
+    }
+
+    &--buttonContainer {
+        @include flexIt($dir: column);
+        min-width: 50%;
+        max-width: 80%;
+        margin-bottom: 1.5rem;
+        gap: .5rem;
+    }
+
+    &:hover {
+        transform: scale(.97);
+    }
+}
+
+.projects--projectContainer--projectItem--buttonContainer {
+    >* {
+        @include flexIt();
+        font-size: $Fs-p;
+        width: 100%;
+        overflow: hidden;
+        color: var(--background);
+        text-decoration: none;
+        background-color: transparent;
+        padding: .5rem;
+        border: 3px solid var(--background);
+    }
+
+    &--liveView {
+        border-color: var(--clr-action);
+    }
+}
+
+.projects--projectContainer--projectItem--buttonContainer--gitHub {
+    &--text {
+        font-size: $Fs-p;
+    }
+}
+
+@include for-smallLaptop {
+    .projects--projectContainer--projectItem {
+        &--img {
+            width: 20vw; //This determines the width of projectItem
+        }
+    }
+}
+
+@include for-tablet {
+    .projects--projectContainer--projectItem {
+        &--img {
+            width: 25vw; //This determines the width of projectItem
+        }
+    }
+}
+
+@include for-phone {
+    .projects--projectContainer--projectItem {
+        width: 100%;
+
+        &--img {
+            width: 100%;
+        }
+    }
+
+    .projects--projectContainer--projectItem--buttonContainer {
+        >* {
+            font-size: $Fs-p-small;
+        }
+    }
+
+    .projects--projectContainer--projectItem--buttonContainer--gitHub {
+        &--text {
+            font-size: $Fs-p-small;
+        }
+    }
+}
+
+@include for-phone-small {
+    .projects--projectContainer--projectItem--buttonContainer {
+        >* {
+            font-size: $Fs-p-small;
+        }
+    }
+
+    .projects--projectContainer--projectItem--buttonContainer--gitHub {
+        &--text {
+            font-size: $Fs-p-small;
+        }
+    }
+}

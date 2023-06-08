@@ -1,0 +1,16 @@
+.gameTouchField {
+    > * {
+        position: absolute;
+        z-index: 0; // infront of canvas, but behind everything else
+        width: 50%;
+        height: 90%;
+        bottom: 0;
+    }
+    &__left {
+        // background-color: rgba(255, 0, 0, 0.5);
+    }
+    &__right {
+        // background-color: rgba(0, 0, 255, 0.5);
+        right: 0;
+    }
+}

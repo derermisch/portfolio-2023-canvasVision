@@ -1,0 +1,60 @@
+// For huge 
+$Fs-huge: clamp(4rem, 10vw + 1rem, 13rem);
+$Fs-huge-mobile: clamp(2rem, 6vw + 1rem, 13rem);
+
+// h1
+$Fs-h1: clamp(2rem, 3.5vw + 1rem, 8rem);
+
+// h2
+$Fs-h2: clamp(1.5rem, 1vw + 1rem, 6rem);
+$Fs-h2-vp: 10vw;
+
+// h3
+$Fs-h3: clamp(1.2rem, .4vw + 1rem, 4rem);
+$Fs-h3-vp: 5vw;
+
+// h4
+$Fs-h4: clamp(1rem, .1vw + 1rem, 2rem);
+
+// paragraph
+// $Fs-p: clamp(1rem, .5vw + .5rem, 2rem);
+$Fs-p: clamp(1rem, .5vw + .5rem, 2rem);
+// $Fs-p-small: clamp(.8rem, .3vw + .5rem, 1.5rem);
+$Fs-p-small: 10px;
+
+// Link
+// $Fs-link: clamp(1rem, .3vw + 1rem, 2rem);
+$Fs-link: clamp(1rem, .2vw + 1rem, 2rem);
+
+h1 {
+    font-size: $Fs-h1;
+}
+
+h2 {
+    font-size: $Fs-h2;
+}
+
+h3 {
+    font-size: $Fs-h3;
+}
+
+h4 {
+    font-size: $Fs-h4;
+}
+
+p,
+a,
+button {
+    font-size: $Fs-p;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lekton', sans-serif;
+    font-weight: 500; //bold
+    font-style: normal;
+}

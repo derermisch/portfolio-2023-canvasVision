@@ -1,0 +1,64 @@
+@import "./navbar/navbar";
+
+.home {
+    min-height: 100vh;
+    @include flexIt($dir: column, $justCont: flex-start);
+    text-align: center;
+}
+
+@import "./heroSection";
+// @include for-phone {
+//     $Img-height: calc(.6 * $Max-height);
+
+//     .home--headingContainer {
+//         &--heading {
+//             // top: 18%;
+//             font-size: $Fs-huge-mobile;
+//         }
+//     }
+
+//     .home--welcomeContainer {
+//         margin-bottom: 1.5rem;
+
+//         &--img {
+//             height: $Img-height;
+//             margin-right: 10vw;
+//         }
+//     }
+
+//     .home--welcomeContainer--buttonContainer {
+//         >* {
+//             border-width: 4px;
+//         }
+//     }
+// }
+
+// @include for-phone-landscape {
+//     $Img-height: calc(.5 * $Max-height);
+
+//     .home--headingContainer {
+//         &--heading {
+//             position: relative !important;
+//             // top: 18%;
+//             font-size: $Fs-huge-mobile;
+//         }
+//     }
+
+//     .home--welcomeContainer {
+//         margin-bottom: 1.5rem;
+
+//         &--img {
+//             height: $Img-height;
+//             // margin-right: 10vw;
+//             margin-left: 2vw;
+//             margin-bottom: -5px;
+//         }
+//     }
+
+//     .home--welcomeContainer--buttonContainer {
+//         >* {
+//             border-width: 4px;
+//             font-size: $Fs-h4;
+//         }
+//     }
+// }

@@ -1,0 +1,104 @@
+@import "./hamburger";
+
+.nav {
+    width: 100%;
+    @include flexIt($dir: row, $justCont: space-between);
+
+    &--linkWrapper--links {
+        font-size: $Fs-link;
+        list-style: none;
+        @include flexIt();
+        gap: 1.5rem;
+    }
+
+    &--hamburger {
+        display: none;
+    }
+}
+
+.nav--linkWrapper--links {
+    >:last-child {
+        padding: 5px;
+        border: 4px solid var(--clr-action);
+        border-radius: $Button-Border-Radius;
+        padding-inline: .5rem;
+    }
+    
+    &--link {
+        @include flexIt($dir: row);
+        text-decoration: none;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 150ms ease-in-out;
+    }
+
+    &--link>* {
+        font-size: $Fs-link;
+    }
+}
+
+.nav--linkWrapper--links--link:hover {
+    transform: scale(1.1);
+    text-decoration: underline;
+    text-decoration-color: var(--clr-action);
+}
+
+// .nav--linkWrapper--links>:nth-child(3):hover{
+//     border-color: var(--clr-action);
+//     text-decoration: none !important;
+// }
+
+@include for-phone-and-phone-landscape {
+    .nav {
+        width: 100%;
+        // justify-content: flex-end;
+    }
+
+    .nav--linkWrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        // height: 100%;
+        height: 100%;
+        z-index: 2;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: all 500ms ease-in-out;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    // if parent is 100% and links is 101%, it locks position
+    // ..but not necessary. Better solution was adding overflow hidden to body
+    .nav--linkWrapper--links {
+        height: 100%;
+        gap: 1rem;
+        background-color: var(--foreground);
+        padding-block: 5rem;
+        flex-direction: column;
+
+        // >:nth-child(3) {
+        //     background-color: var(--foreground) !important;
+        //     padding: 5px !important;
+        //     border: 2px solid var(--clr-action) !important;
+        // }
+
+        > a {
+            background-color: var(--foreground);
+            color: var(--background);
+        }
+    }
+
+    .nav--linkWrapper--links--link {
+        >* {
+            background-color: var(--foreground);
+            color: var(--background);
+        }
+    }
+
+    .nav--linkWrapper.openNav {
+        visibility: visible;
+        transform: translateX(0%);
+    }
+}

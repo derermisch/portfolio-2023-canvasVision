@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Ballsy</title>
+    <link rel="icon" type="image/png" href="ballsyFavicon.png" />
+  </head>
+  <body id="ballsyBody">
+    <div class="gameMenu">
+      <div class="gameMenu__menu">
+        <h1 class="gameMenu__menu__heading">Ballsy</h1>
+        <button class="gameMenu__menu__startBtn gameBtn">Start</button>
+        <p class="gameMenu__menu__info">
+          <br /><b>How to play</b><br />
+          To stir the player, use left and right arrow keys.<br />
+          (Or left and right side of the screen on mobile)<br />
+          Click on the menu icon or press ESC to open the menu.<br />
+          The further you'll go, the faster you'll be.<br />
+          Don't hit the walls!
+        </p>
+      </div>
+      <div class="gameMenu__hud">
+        <nav class="gameMenu__hud__navBars">
+          <div class="gameMenu__hud__navBars__bar"></div>
+          <div class="gameMenu__hud__navBars__bar"></div>
+          <div class="gameMenu__hud__navBars__bar"></div>
+        </nav>
+        <p class="gameMenu__hud__score">10</p>
+      </div>
+      <div class="gameMenu__playing">
+        <button class="gameMenu__playing__goBtn gameBtn">GO</button>
+      </div>
+      <div class="gameMenu__paused">
+        <div class="gameMenu__paused__buttons">
+          <div class="gameMenu__paused__buttons__retry gameBtn">Retry</div>
+          <div class="gameMenu__paused__buttons__quit gameBtn">Quit</div>
+        </div>
+      </div>
+      <div class="gameMenu__gameOver">
+        <p class="gameMenu__gameOver__textArea">SCORE: 0</p>
+        <div class="gameMenu__gameOver__buttons">
+          <button class="gameMenu__gameOver__buttons__retry gameBtn">
+            Retry
+          </button>
+          <button class="gameMenu__gameOver__buttons__menu gameBtn">
+            Menu
+          </button>
+        </div>
+      </div>
+    </div>
+    <canvas id="ballsyCanvas"></canvas>
+    <script type="module" src="./ballsy/ballsy.js"></script>
+  </body>
+</html>

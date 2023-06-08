@@ -1,0 +1,12 @@
+.spacer {
+    position: absolute;
+    left: 0;
+
+    >* {
+        z-index: -10;
+        aspect-ratio: 1000/64;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+}

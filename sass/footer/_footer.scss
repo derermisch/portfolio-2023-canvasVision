@@ -1,0 +1,40 @@
+.footer {
+    @include flexIt($dir: row, $alignIt: flex-start);
+    gap: 3rem;
+    background-color: var(--foreground);
+    padding-block: $Sites-PaddingBlock;
+
+    >* {
+        @include flexIt($dir: column, $alignIt: flex-start);
+        gap: .5rem;
+        color: var(--background);
+        background-color: var(--foreground);
+    }
+}
+
+.footer--navigation, .footer--rechtliches {
+    &--heading {
+        font-size: $Fs-h3;
+    }
+    >a {
+        cursor: pointer;
+        color: var(--background);
+        background-color: var(--foreground);
+        // text-decoration: none;
+    }
+}
+
+@include for-phone {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+
+        >* {
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+}
+
+@import "./scrollUpButton";

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // cursor: none;
+}
+
+html {
+    font-size: 16px;
+
+}
+
+body {
+    width: 100%;
+    font-family: 'Lekton', sans-serif;
+    font-weight: 400; //regular
+    font-style: normal;
+    font-size: 16px;
+    color: var(--foreground);
+    background-color: var(--background);
+    scroll-behavior: smooth;
+}
+
+body.navOpen {
+    overflow: hidden;
+}
+
+button,
+a,
+textarea {
+    font-family: 'Lekton', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--foreground);
+    background-color: var(--background);
+}
+
+a,
+button {
+    cursor: pointer;
+    border-radius: 8px;
+    padding-inline: .5rem;
+    border: none;
+}
+
+::selection {
+    background-color: var(--foreground);
+    color: var(--background);
+}

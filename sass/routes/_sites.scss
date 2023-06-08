@@ -1,0 +1,17 @@
+.sites > * , .site {
+    // min-height: 100vh;
+    padding-block: $Sites-PaddingBlock;
+    padding-inline: $Sites-PaddingInline;
+}
+
+.site {
+    min-height: 100vh;
+    @include flexIt($dir: column, $justCont: flex-start);
+}
+
+@include for-phone{
+    .sites > *, .site {
+        padding-block: $Sites-PaddingBlock-Mobile;
+        padding-inline: $Sites-PaddingInline-Mobile;
+    }
+}

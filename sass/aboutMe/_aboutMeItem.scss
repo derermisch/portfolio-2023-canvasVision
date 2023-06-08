@@ -1,0 +1,74 @@
+.aboutMe--listContainer--listItem {
+    width: 100%;
+
+    &--textContainer {
+        margin-left: 5vw;
+        margin-top: .5rem;
+    }
+}
+
+.aboutMe--listContainer--listItem--headingContainer {
+    @include flexIt($dir: row, $justCont: flex-start, $alignIt: flex-end);
+    // gap: .5rem;
+
+    &--number {
+        font-size: $Fs-h2;
+        font-weight: 400;
+        color: var(--background);
+        -webkit-text-stroke: .2vw var(--foreground);
+        width: calc($Fs-h2 + 3.5%);
+    }
+
+    &--heading {
+        font-size: $Fs-h3;
+        cursor: pointer;
+    }
+
+    &--arrow {
+        margin-left: .5rem;
+        background-color: transparent;
+        align-self: flex-end;
+        font-size: $Fs-h3;
+        color: var(--clr-action);
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.aboutMe--listContainer--listItem--textContainer {
+    >p {
+        font-size: $Fs-p;
+        animation: fadeIn 100ms ease-in-out;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateX(-100vw);
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0vw);
+    }
+}
+
+@include for-phone {
+    .aboutMe--listContainer--listItem--headingContainer {
+        flex-wrap: wrap;
+
+        &--number {
+            font-size: $Fs-h2-vp;
+            // width: calc($Fs-h2-vp + 5vw);
+            width: unset;
+            -webkit-text-stroke: .5vw var(--foreground);
+        }
+
+        &--heading,
+        &--arrow {
+            cursor: pointer;
+            font-size: $Fs-h3-vp;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.gameMenu__playing{
+    &__goBtn {
+        position: absolute;
+        @include centerDiv();
+        margin-top: 20vh;
+        width: 20vw;
+        height: 10vw;
+        font-size: 5vw;
+        border-color: red;
+        cursor: pointer;
+        @include for-phone {
+            width: 60vw;
+            height: 15vh;
+            font-size: 10vw;
+        }
+    }
+}

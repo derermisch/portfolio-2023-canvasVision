@@ -1,0 +1,58 @@
+.projects {
+    min-height: 100vh;
+    padding-right: unset; //To let projects flow to max width
+
+    &--heading {
+        font-size: $Fs-h1;
+        font-weight: 500;
+    }
+
+    &--gradient {
+        position: absolute;
+        right: 0;
+        width: $Sites-PaddingInline;
+        // background-image: linear-gradient(to left, rgba(#404040, 1), rgba(#404040, 0));
+    }
+
+    &--projectContainer {
+        margin-left: $MainElement-marginLeft;
+        margin-top: $MainElement-marginTop;
+        @include flexIt($justCont: flex-start);
+        gap: 2rem;
+        overflow-x: scroll;
+        overscroll-behavior-inline: contain;
+        padding-right: $Sites-PaddingInline; //For the gradient
+    }
+}
+
+@import "./projectItem";
+
+@include for-smallLaptop {
+    .projects--projectContainer {
+        margin-left: calc($MainElement-marginLeft / 2);
+        margin-top: calc($MainElement-marginTop / 2);
+    }
+}
+
+@include for-phone {
+    .projects {
+        padding-right: $Sites-PaddingBlock-Mobile;
+        min-height: unset;
+
+        &--gradient {
+            display: none;
+        }
+
+        &--projectContainer {
+            margin-left: unset;
+            overflow-x: unset;
+            gap: 1rem;
+            padding-right: unset;
+
+            // width: calc(100% - $Sites-PaddingInline-Mobile);
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}

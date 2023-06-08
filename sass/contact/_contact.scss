@@ -1,0 +1,11 @@
+.contact {
+    min-height: 100vh;
+}
+
+@import "./formContainer";
+
+@include for-phone {
+    .contact {
+        min-height: unset;
+    }
+}

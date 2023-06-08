@@ -1,0 +1,32 @@
+.aboutMe {
+    min-height: 100vh;
+
+    &--listContainer {
+        max-width: $MainElemet-maxWidth;
+        width: 80%;
+        margin-left: $MainElement-marginLeft;
+        margin-top: $MainElement-marginTop;
+        @include flexIt($justCont: flex-start, $dir: column, $alignIt: flex-start);
+        gap: 1rem;
+    }
+}
+
+@import "./aboutMeItem";
+
+@include for-smallLaptop {
+    .aboutMe--listContainer {
+        margin-left: calc($MainElement-marginLeft / 2);
+        margin-top: calc($MainElement-marginTop / 2);
+    }
+}
+
+@include for-phone {
+    .aboutMe {
+        min-height: unset;
+
+        &--listContainer {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+:root {
+    --clr-primary: #272727;
+    --clr-secondary: #EFE9E7;
+    // --clr-action: #59A96A;
+    --clr-action: #2B50AA;
+    //https://coolors.co/272727-efe9e7-248232-2ba84a-2b50aa
+
+    --foreground: var(--clr-primary);
+    --background: var(--clr-secondary);
+}
+
+.dark {
+    --foreground: var(--clr-secondary);
+    --background: var(--clr-primary);
+}
+
+.light {
+    --foreground: var(--clr-primary);
+    --background: var(--clr-secondary);
+}

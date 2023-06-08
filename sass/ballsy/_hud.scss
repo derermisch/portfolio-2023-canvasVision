@@ -1,0 +1,56 @@
+$navBarSize: 3vw;
+
+.gameMenu__hud {
+  &__navBars {
+    z-index: 2;
+    position: absolute;
+    margin: $navBarSize/4 0 0 $navBarSize/4;
+    width: $navBarSize * 1.5;
+    height: $navBarSize;
+    // background-color: red;
+    @include flexIt();
+    justify-content: space-between;
+    cursor: pointer;
+    @include for-phone {
+      $navBarSize: 4vw;
+      margin: $navBarSize/2 0 0 $navBarSize/2;
+      width: $navBarSize * 2.5;
+      height: $navBarSize * 2;
+    }
+    &__bar {
+      background-color: black;
+      width: 100%;
+      height: 20%;
+      border-radius: 15px;
+      transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    }
+  }
+  &__score {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    margin: $navBarSize/4 $navBarSize/4 0 0;
+    color: red;
+    font-size: 5vw;
+    @include for-phone {
+      margin: $navBarSize/2 $navBarSize/2 0 0;
+      font-size: 10vw;
+    }
+  }
+}
+
+.gameMenu__hud__navBars.active {
+  > :first-child {
+    transform-origin: left;
+    transform: rotate(45deg);
+    width: 80%;
+  }
+  > :nth-child(2) {
+    opacity: 0;
+  }
+  > :last-child {
+    transform-origin: left;
+    transform: rotate(-45deg);
+    width: 80%;
+  }
+}

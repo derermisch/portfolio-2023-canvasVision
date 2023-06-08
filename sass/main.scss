@@ -1,0 +1,23 @@
+@import "./config/config";
+
+@import "./routes/sites";
+
+@import "./settings/toggle";
+@import "./settings/backgroundCanvas";
+@import "./settings/spacer";
+
+@import "./home/home";
+@import "./introScroller/introScroller";
+@import "./projects/projects";
+@import "./aboutMe/aboutMe";
+@import "./contact/contact";
+
+@import "./footer/footer";
+
+@import "./routes/datenschutz";
+@import "./routes/impressum";
+
+@import "./loadingScreen/loadingScreen";
+
+// For game
+@import "./ballsy/ballsy";

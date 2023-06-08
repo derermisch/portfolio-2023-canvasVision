@@ -1,0 +1,51 @@
+.hamburgerContainer {
+    background-color: transparent;
+    border: none;
+    z-index: 5;
+    display: none;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+}
+
+$hamburgerWidth: 40px;
+.hamburger {
+    margin-left: .5rem;
+    background-color: transparent;
+    width: $hamburgerWidth;
+    cursor: pointer;
+    stroke: var(--foreground);
+    fill: var(--foreground);
+}
+
+.hamburger .line {
+    transition: all 300ms ease-in-out;
+    transform-origin: center;
+}
+
+.openHamburger {
+    z-index: 2;
+    // position: fixed;
+    top: calc($Sites-PaddingBlock-Mobile);
+    right: calc($Sites-PaddingBlock-Mobile);
+    stroke: var(--background);
+    fill: var(--background);
+
+    .top {
+        transform: rotateZ(45deg) translateY(20%);
+    }
+
+    .middle {
+        opacity: 0;
+    }
+
+    .bottom {
+        transform: rotateZ(-45deg) translateY(-20%);
+    }
+}
+
+@include for-phone-and-phone-landscape {
+    .hamburgerContainer {
+        display: block !important;
+    }
+}

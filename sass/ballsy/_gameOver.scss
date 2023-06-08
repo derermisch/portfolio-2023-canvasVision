@@ -1,0 +1,39 @@
+.gameMenu__gameOver {
+  // background-color: red;
+  position: absolute;
+  @include centerDiv();
+  &__textArea {
+    width: 30vw;
+    height: 25vh;
+    border: 0.6vw solid red;
+    font-size: 5vw;
+    text-align: center;
+    @include flexIt();
+    @include for-phone {
+      width: 60vw;
+      height: 20vh;
+      border-width: 2vw;
+      font-size: 10vw;
+    }
+  }
+  &__buttons {
+    margin: auto;
+    margin-top: 10vh;
+    // background-color: red;
+    width: 80%;
+    height: 30vh;
+    @include flexIt();
+    justify-content: space-between;
+    @include for-phone {
+      margin-top: 5vh;
+    }
+    > * {
+        width: 100%;
+        height: 45%;
+        font-size: 3.5vw;
+        @include for-phone {
+          font-size: 8vw;
+        }
+    }
+  }
+}

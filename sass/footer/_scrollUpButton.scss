@@ -1,0 +1,33 @@
+.anfahrt--scrollUpBtn {
+    opacity: 0;
+    border: none;
+    position: sticky;
+    bottom: $Sites-PaddingBlock;
+    background-color: var(--foreground);
+    // transform: translateX(calc(50vw - 64px / 2)) translateY(32px);
+    transform: translateX(calc(100vw - 64px - 6rem)) translateY(32px);
+    width: 64px;
+    height: 64px;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.anfahrt--scrollUpBtn {
+    &--svg {
+        width: 32px;
+        height: 32px;
+        transform: rotate(180deg);
+        stroke: var(--background);
+        >path {
+            fill: var(--background);
+        }
+    }
+}
+
+@include for-phone {
+    .anfahrt--scrollUpBtn {
+        position: static;
+        transform: translateX(calc(50vw - 64px / 2)) translateY(32px);
+    }
+}

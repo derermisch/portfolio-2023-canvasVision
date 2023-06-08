@@ -1,0 +1,60 @@
+.introScroller--item {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    width: 50%;
+    transition: opacity 2s ease-in-out;
+    opacity: 0;
+    text-align: center;
+
+    &--heading {
+        font-size: $Fs-h1;
+        font-weight: bold;
+    }
+
+    &--buttons {
+        margin-top: 3rem;
+        @include flexIt($dir: column);
+    }
+}
+
+.introScroller--item--buttons {
+    >:first-child {
+        margin-bottom: 1rem;
+    }
+    >* {
+        background-color: transparent;
+        font-size: $Fs-h2;
+        color: var(--foreground);
+        border: 2px solid var(--foreground);
+        border-radius: 8px;
+    }
+}
+
+.introScroller--item.fadeIn {
+    opacity: 1;
+
+}
+
+@include for-smallLaptop {
+    .introScroller--item {
+        width: 60%;
+    }
+}
+
+@include for-tablet {
+    .introScroller--item {
+        width: 70%;
+    } 
+}
+
+@include for-phone {
+    .introScroller--item {
+        width: 100%;
+    }
+    .introScroller--item--buttons {
+        >* {
+            font-size: $Fs-h3;
+        }
+    }
+}

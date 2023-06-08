@@ -1,0 +1,70 @@
+@mixin flexIt($dir: row, $justCont: center, $alignIt: center) {
+    display: flex;
+    justify-content: $justCont;
+    align-items: $alignIt;
+    flex-direction: $dir;
+}
+
+@mixin for-phone {
+    @media (max-width: 500px) {
+        @content;
+    }
+}
+
+@mixin for-phone-landscape {
+    @media screen {
+        @media (max-height: 600px) and (orientation: landscape) {
+            @content;
+        }
+    }
+}
+
+@mixin for-phone-and-phone-landscape {
+    @media screen {
+        @media ((max-height: 600px) and (orientation: landscape)), (max-width: 500px) {
+            @content;
+        }
+    }
+}
+
+@mixin for-phone-medium {
+    @media (max-width: 375px) {
+        @content;
+    }
+}
+
+@mixin for-phone-small {
+    @media (max-width: 320px) {
+        @content;
+    }
+}
+
+@mixin for-tablet {
+    @media (max-width: 820px) {
+        @content;
+    }
+}
+
+@mixin for-smallLaptop {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin for-biggerScreens {
+    @media (width >=1920px) {
+        @content;
+    }
+}
+
+@mixin print {
+    @media print {
+        @content;
+    }
+}
+
+// @mixin or-test {
+//     @media screen and (orientation: landscape), (min-height: 200px) {
+//         @content;
+//     }
+// }
