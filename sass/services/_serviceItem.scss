@@ -1,0 +1,105 @@
+.service--itemContainer--item {
+    &--text {
+        font-size: $Fs-h2;
+        font-weight: bold;
+        line-height: 1;
+        opacity: 0;
+        animation-name: serviceItemInactive;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes serviceItemInactive {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        90% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(1);
+        }
+    }
+
+    &--text.isActive {
+        transform: rotate(45deg);
+        animation-name: serviceItemActive;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes serviceItemActive {
+        0% {
+            opacity: 0;
+            transform: scale(1);
+        }
+
+        90% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    &--route {
+        // background-color: var(--clr-action);
+        background-color: var(--foreground);
+        width: $routeSize;
+        height: $routeSize;
+        aspect-ratio: 1 / 1;
+        transform: rotate(45deg);
+    }
+
+    &--route.fillPop {
+        transform: rotate(45deg);
+        animation-name: fillPopAnim;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        // animation-iteration-count: infinite;
+    }
+
+    @keyframes fillPopAnim {
+        0% {
+            background-color: var(--foreground);
+            transform: scale(1) rotate(45deg);
+        }
+
+        90% {
+            background-color: var(--clr-action);
+            transform: scale(1.4) rotate(45deg);
+        }
+
+        100% {
+            background-color: var(--clr-action);
+            transform: scale(1) rotate(45deg);
+        }
+    }
+}
+
+@include for-smallLaptop {
+    .service--itemContainer--item {
+        &--text {
+            font-size: $Fs-h3;
+            font-weight: 500;
+        }
+    }
+}
+
+@include for-phone {
+    .service--itemContainer--item {
+        &--text {
+            font-size: 16px;
+            line-break: strict;
+        }
+    }
+}

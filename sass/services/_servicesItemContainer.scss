@@ -1,0 +1,53 @@
+@use "sass:math";
+$routeSize: 1rem;
+
+.service--itemContainer {
+    // position: absolute;
+    // top: 20vh;
+    // left: 0;
+    width: 100%;
+    display: grid;
+    // grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    row-gap: 6rem;
+    margin-block: 6rem; //when changing here, change code too! (Services.jsx)
+
+    >:nth-child(2n - 1) {
+        justify-self: right;
+        margin-right: math.div(-$routeSize, 2);
+    }
+
+    >:nth-child(2n) {
+        justify-self: left;
+        margin-left: math.div(-$routeSize, 2);
+        flex-flow: row-reverse;
+    }
+
+    &--item {
+        @include flexIt();
+        //With min-width: 0, the flex-box can shrink below its minimun content site
+        //Meaning it can shrink below the length of the longest word or fixed-size element
+        //https://stackoverflow.com/questions/12022288/how-to-keep-a-flex-item-from-overflowing-due-to-its-text/12131365#12131365
+        min-width: 0;
+        column-gap: 3rem;
+        width: 100%;
+        // line-break: anywhere;
+    }
+}
+
+@import "serviceItem";
+
+@include for-smallLaptop {
+    .service--itemContainer {
+        &--item {
+            @include flexIt();
+            //With min-width: 0, the flex-box can shrink below its minimun content site
+            //Meaning it can shrink below the length of the longest word or fixed-size element
+            //https://stackoverflow.com/questions/12022288/how-to-keep-a-flex-item-from-overflowing-due-to-its-text/12131365#12131365
+            min-width: 0;
+            column-gap: 1rem;
+            // line-break: anywhere;
+        }
+    }
+}

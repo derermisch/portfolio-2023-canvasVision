@@ -6,6 +6,13 @@ export const determineTouchScreen = () => {
     return window.matchMedia("(pointer: coarse)").matches
 }
 
+const onDataFetched = () => {
+    console.log("data fetched")
+}
+
+window.removeEventListener("dataFetched", onDataFetched)
+window.addEventListener("dataFetched", onDataFetched)
+
 // export let isMobile = determineIfMobile()
 
 // window.addEventListener("resize", () => {

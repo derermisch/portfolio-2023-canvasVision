@@ -11,11 +11,15 @@ import aboutMeItem from "./aboutMeItem"
 import aboutMe from "./aboutMe"
 import other from './other'
 import introScroller from './introScroller'
+import services from './services'
+import serviceItem from './serviceItem'
 
 export const schemaTypes = [
     blockContent,
     home,
     introScroller,
+    services,
+    serviceItem,
     projectsite,
     projectData,
     contact,

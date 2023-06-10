@@ -2,14 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import sanityClient from "../../client"
 
-// const dataFetchEvent = new CustomEvent("dataFetched")
+const dataFetchEvent = new CustomEvent("dataFetched")
 
 export const getServerData = (url, log = false) => async () => {
     log && console.log("Fetching from: ", url)
     const response = await sanityClient.fetch(url)
     // console.log(url, response)
     log && console.log(response)
-    // window.dispatchEvent(dataFetchEvent)
+    window.dispatchEvent(dataFetchEvent)
     return response;
 }
 

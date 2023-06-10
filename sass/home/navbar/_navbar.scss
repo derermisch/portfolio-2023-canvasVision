@@ -48,6 +48,14 @@
 //     text-decoration: none !important;
 // }
 
+@include for-tablet {
+    .nav--linkWrapper--links--link{
+        &--text {
+            font-size: $Fs-p;
+        }
+    }
+}
+
 @include for-phone-and-phone-landscape {
     .nav {
         width: 100%;
@@ -89,7 +97,7 @@
             color: var(--background);
         }
     }
-
+    
     .nav--linkWrapper--links--link {
         >* {
             background-color: var(--foreground);

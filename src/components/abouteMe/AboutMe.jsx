@@ -6,7 +6,7 @@ import AboutMeList from "./AboutMeList"
 export default function AboutMe() {
     return (
         <section className="aboutMe">
-            <BackgroundCanvas pageMult={3}/>
+            {/* <BackgroundCanvas pageMult={3}/> */}
             {/* <DataSource
                 getDataFunc={getServerData('*[_type == "aboutmesite"][0].heading')}
                 resourceName="headingArr"
