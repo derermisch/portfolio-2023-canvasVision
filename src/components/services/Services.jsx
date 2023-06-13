@@ -169,7 +169,12 @@ export default function Services() {
             >
                 <ServiceItemContainer lan={value} signalFunc={signalReady} />
             </DataSource>
-            <BackgroundCanvas pageMult={4} />
+            {gridHeight && <BackgroundCanvas pageMult={4} targetElement={document.querySelector(".services")}/>}
+            {gridHeight && <DataSource
+                getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
+                resourceName="spacerRes">
+                <Spacer pageMult={1} targetElement={document.querySelector(".services")} />
+            </DataSource> }
             {/* <DataSource
                 getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
                 resourceName="spacerRes">

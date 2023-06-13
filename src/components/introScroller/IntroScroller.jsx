@@ -19,11 +19,11 @@ export default function IntroScroller() {
             resourceName="introScrollData">
             <IntroScrollerItem lan={value} introButtons={true} />
         </DataSource>
-        <BackgroundCanvas pageMult={2} shape="90deg_down" heightMult={2} zoom={.7} />
+        <BackgroundCanvas targetElement={document.querySelector(".introScroller")} shape="90deg_down" heightMult={2} zoom={.7} />
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">
-            <Spacer pageMult={3} />
+            <Spacer pageMult={3} targetElement={document.querySelector(".introScroller")}/>
         </DataSource>
     </div>
 }

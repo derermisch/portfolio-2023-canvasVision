@@ -1,8 +1,4 @@
 .contact--form {
-    margin-left: $MainElement-marginLeft;
-    margin-top: $MainElement-marginTop;
-    max-width: $MainElemet-maxWidth;
-
     display: grid;
     grid-template-rows: repeat(4, min-content);
     grid-template-columns: max-content 1fr;
@@ -10,16 +6,18 @@
     column-gap: 4em;
 
     >label {
-        font-size: $Fs-h3;
+        font-size: $Fs-h4;
     }
 
     >input,
     >textarea {
+        @include flexIt();
         padding: 1rem;
         border: 2px solid var(--foreground);
+        border-radius: 8px;
         background-color: transparent;
         font-size: $Fs-p;
-        font-family: soleil, sans-serif;
+        font-family: 'Lekton', sans-serif;
         color: var(--foreground);
 
         // &::placeholder {
@@ -42,10 +40,9 @@
 
 .contact--form--submitContainer {
     grid-column: 2 / 3;
-    @include flexIt($justCont: space-between, $alignIt: flex-start);
+    @include flexIt($dir: column, $alignIt: flex-start);
 
     &--text {
-        width: 60%;
         font-size: $Fs-p-small;
     }
 }

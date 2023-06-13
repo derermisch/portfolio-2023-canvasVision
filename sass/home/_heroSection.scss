@@ -31,7 +31,7 @@
         margin-top: 2rem;
         background-color: var(--clr-action);
         font-size: $Fs-h2;
-        color: var(--background);
+        color: var(--foreground);
     }
 }
 
@@ -59,9 +59,44 @@
     }
 
     &--img {
-        width: 70%;
-        border-radius: 50%;
+        background-size: cover;
+        background-position: center center;
+        width: 60%;
+        border-radius: 30% 5%;
         aspect-ratio: 1 / 1;
+        // animation: imgWobble 2s ease-in-out infinite alternate;
+        // https://9elements.github.io/fancy-border-radius/full-control.html#26.21.26.30-42.55.56.75-.
+        // border-radius: 30% 5%;
+        transition: border-radius 1s ease-in-out;
+    }
+
+    &--img:hover {
+        border-radius: 5% 30%;
+    }
+
+    @keyframes imgWobble {
+        0% {
+            border-radius: 30% 5%;
+        }
+        100% {
+            border-radius: 5% 30%;
+        }
+    }
+}
+
+@include for-biggerScreens {
+    .home--heroSection--left--textContainer {
+        &--subHeading {
+            width: 70%;
+        }
+    }
+}
+
+@include for-smallLaptop {
+    .home--heroSection--left {
+        &--textContainer {
+            width: 80%;
+        }
     }
 }
 
@@ -90,32 +125,32 @@
 
     .home--heroSection--right {
         &--img {
-            width: 90%;
+            width: 50%;
         }
     }
 }
 
-@media screen {
-    @media (max-width: 820px) and (max-height: 1000px) {
-        .home--heroSection--right {
-            &--img {
-                width: 50%;
-            }
-        }
-    }
-}
+// @media screen {
+//     @media (max-width: 820px) and (max-height: 1000px) {
+//         .home--heroSection--right {
+//             &--img {
+//                 width: 50%;
+//             }
+//         }
+//     }
+// }
 
 @include for-phone {
     .home--heroSection--left {
         &--callToAction {
             margin-top: 1rem;
-            font-size: $Fs-h3;
+            font-size: $Fs-h2;
         }
     }
 
     .home--heroSection--left--textContainer {
         &--heading {
-            font-size: $Fs-h2;
+            font-size: $Fs-h1;
         }
 
         &--subHeading {
@@ -125,7 +160,8 @@
 
     .home--heroSection--right {
         &--img {
-            width: 90%;
+            width: 80%;
         }
     }
 }
+

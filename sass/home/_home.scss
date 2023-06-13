@@ -2,63 +2,53 @@
 
 .home {
     min-height: 100vh;
-    @include flexIt($dir: column, $justCont: flex-start);
+    @include flexIt($dir: column, $justCont: flex-start, $alignIt: flex-start);
     text-align: center;
+
+    &--scrollSvg {
+        // stroke: var(--foreground);
+        fill: var(--foreground);
+        z-index: 1;
+        transform: translate(0, -60%);
+    }
+}
+
+.home--scrollSvg {
+    >*{
+        fill: var(--foreground);
+    }
+
+    &--arrow {
+        stroke: var(--clr-action);
+        fill: var(--clr-action);
+        animation: callToAction 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes callToAction {
+        0% {
+            transform: translate(0, 0)
+        }
+        100% {
+            transform: translate(0, -5%)
+        }
+    }
+}
+
+@include for-tablet {
+    .home {
+        align-items: center;
+        &--scrollSvg {
+            transform: translate(0, -20%);
+        }
+    }
+}
+
+@include for-phone {
+    .home {
+        &--scrollSvg {
+            transform: translate(0, -50%);
+        }
+    }
 }
 
 @import "./heroSection";
-// @include for-phone {
-//     $Img-height: calc(.6 * $Max-height);
-
-//     .home--headingContainer {
-//         &--heading {
-//             // top: 18%;
-//             font-size: $Fs-huge-mobile;
-//         }
-//     }
-
-//     .home--welcomeContainer {
-//         margin-bottom: 1.5rem;
-
-//         &--img {
-//             height: $Img-height;
-//             margin-right: 10vw;
-//         }
-//     }
-
-//     .home--welcomeContainer--buttonContainer {
-//         >* {
-//             border-width: 4px;
-//         }
-//     }
-// }
-
-// @include for-phone-landscape {
-//     $Img-height: calc(.5 * $Max-height);
-
-//     .home--headingContainer {
-//         &--heading {
-//             position: relative !important;
-//             // top: 18%;
-//             font-size: $Fs-huge-mobile;
-//         }
-//     }
-
-//     .home--welcomeContainer {
-//         margin-bottom: 1.5rem;
-
-//         &--img {
-//             height: $Img-height;
-//             // margin-right: 10vw;
-//             margin-left: 2vw;
-//             margin-bottom: -5px;
-//         }
-//     }
-
-//     .home--welcomeContainer--buttonContainer {
-//         >* {
-//             border-width: 4px;
-//             font-size: $Fs-h4;
-//         }
-//     }
-// }

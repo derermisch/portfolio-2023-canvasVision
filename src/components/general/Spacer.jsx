@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners"
 import { getCurrentLightMode } from "../../utils/darkmode"
 
 // svg-code from https://app.haikei.app/. Dimensions: 1000 x 100
-export default function Spacer({ spacerRes, pageMult = 1 }) {
+export default function Spacer({ spacerRes, pageMult = 1, targetElement = null }) {
     const containerRef = useRef(null)
 
     useEffect(() => {
@@ -30,7 +30,9 @@ export default function Spacer({ spacerRes, pageMult = 1 }) {
             })
             lowerSpacer.style.rotate = "180deg"
             container.style.top = `calc(${pageMult * 100}vh - ${container.getBoundingClientRect().height / 2}px)`
-
+            if (targetElement) {
+                container.style.top = targetElement.getBoundingClientRect().height + targetElement.getBoundingClientRect().top + Number(scrollY) - container.getBoundingClientRect().height / 2 + "px"
+            }
         }
         setUpSpacer()
 
@@ -39,14 +41,14 @@ export default function Spacer({ spacerRes, pageMult = 1 }) {
             setUpSpacer()
         }
 
-        window.addEventListener("resize", setUpSpacer)
+        window.addEventListener("customResize", setUpSpacer)
         window.addEventListener("notifyLightMode", onLightModeChange)
 
         return () => {
             window.removeEventListener("resize", setUpSpacer)
             window.removeEventListener("notifyLightMode", onLightModeChange)
         }
-    }, [containerRef, spacerRes, pageMult])
+    }, [containerRef, spacerRes, pageMult, targetElement])
 
     return spacerRes ?
         <div className="spacer" ref={containerRef}>

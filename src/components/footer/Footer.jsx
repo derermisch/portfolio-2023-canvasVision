@@ -63,7 +63,7 @@ export default function Footer({ navlinkData, lan }) {
     return (
         navLinks ?
             <>
-                <ScrollUpButton />
+                {/* <ScrollUpButton /> */}
                 <section className="footer">
                     {
                         showHomeNavigation ?

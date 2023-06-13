@@ -8,9 +8,10 @@
 }
 
 .toggle {
-    --width: 50px;
-    --height: calc(var(--width) / 2);
-    --border-radius: calc(var(--height) / 2);
+    --width: 48px;
+    --divisor: 2.3;
+    --height: calc(var(--width) / var(--divisor));
+    --border-radius: calc(var(--height) / var(--divisor));
 
     display: inline-block;
     cursor: pointer;
@@ -21,8 +22,9 @@
 }
 
 .toggle--container {
-    padding: 5% 10%;
-    @include flexIt($justCont: space-between);
+    // padding: 5% 10%;
+    @include flexIt();
+    justify-content: space-around;
     position: relative;
     width: var(--width);
     height: var(--height);
@@ -32,45 +34,32 @@
     // transition: background 0.2s;
 
     >* {
-        width: calc((var(--width) / 2) * 0.5)
+        width: calc((var(--width) / 2) / 2);
+        max-height: 60%;
     }
 }
-
-// .toggle--input:checked~.toggle--container {
-//     background: #009578;
-// }
 
 .toggle--container::after {
     content: "";
     position: absolute;
-    // top: -1;
-    left: -2px;
-    height: calc(var(--height) + 2px);
-    width: calc(var(--height) + 2px);
-    background: #ffffff;
+    left: -4px;
+    --toggleSize: calc(var(--height) + 2px);
+    height: var(--toggleSize);
+    width: var(--toggleSize);
+    background-color: var(--background);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    border: 1px solid black;
+    border: 1px solid var(--foreground);
     border-radius: 50%;
     transition: transform 0.2s;
 }
 
 .toggle--input:checked~.toggle--container::after {
-    transform: translateX((var(--height)));
+    transform: translateX(calc((var(--width)) - var(--toggleSize) + 4px));
 }
 
 @include for-phone-and-phone-landscape {
-    .settingsToggle {
-        // right: unset;
-        // left: $Sites-PaddingInline-Mobile;
-
-        // gap: 5px;
-    }
     .toggle {
         --width: 40px;
-        // --height: calc(var(--width) / 2);
-        // --border-radius: calc(var(--height) / 2);
-    
-        // display: inline-block;
         cursor: pointer;
     }
 }

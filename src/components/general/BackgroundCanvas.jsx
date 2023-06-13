@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 
-export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heightMult = 1, widthMult = 1, curve = 1, zoom = 1 }) {
+export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heightMult = 1, widthMult = 1, curve = 1, zoom = 1 , targetElement = null}) {
     const canvasRef = useRef(null)
 
     useEffect(() => {
@@ -14,6 +14,10 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
         canvas.height = window.innerHeight * heightMult
 
         canvas.style.top = `${100 * pageMult - 100}vh`
+        if (targetElement){
+            canvas.style.top = targetElement.getBoundingClientRect().top + scrollY + "px"
+            canvas.height = targetElement.getBoundingClientRect().height
+        }
 
         ctx.lineWidth = .6
         ctx.fillStyle = "white"
@@ -136,6 +140,10 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
                 canvas.width = document.body.clientWidth * widthMult
                 canvas.height = window.innerHeight * heightMult
                 canvas.style.top = `${100 * pageMult - 100}vh`
+                if (targetElement){
+                    canvas.style.top = targetElement.getBoundingClientRect().top + scrollY + "px"
+                    canvas.height = targetElement.getBoundingClientRect().height
+                }
                 this.init()
             }
             render() {
@@ -156,21 +164,21 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
         }
         animate()
 
-        const onResizeEvent = () => {
+        const onResizeEvent = (e) => {
             cancelAnimationFrame(frameId)
             // console.log("client width", document.body.clientWidth, "inner width", window.innerWidth)
             effect.resize()
             animate()
         }
 
-        window.addEventListener("resize", onResizeEvent)
+        window.addEventListener("customResize", onResizeEvent)
 
         return () => {
             cancelAnimationFrame(frameId)
-            window.removeEventListener("resize", onResizeEvent)
+            window.removeEventListener("customResize", onResizeEvent)
         }
 
-    }, [canvasRef, pageMult, shape, heightMult, widthMult, curve, zoom])
+    }, [canvasRef, pageMult, shape, heightMult, widthMult, curve, zoom, targetElement])
 
     return (
         <canvas className="backgroundCanvas" ref={canvasRef}></canvas>

@@ -1,3 +1,6 @@
+// Device information
+// 
+//
 export const determineIfMobile = () => {
     return (window.innerWidth <= 500) ? true : false
 }
@@ -6,12 +9,63 @@ export const determineTouchScreen = () => {
     return window.matchMedia("(pointer: coarse)").matches
 }
 
+// Content loaded?
+// Doesn't show page as long initial content isn't loaded
+//
+let timerId = null
+const contentLoadedEvent = new CustomEvent("contentLoaded")
+let contentLoaded = false
+
+const startTimer = () => {
+    timerId = setTimeout(() => {
+        console.log("Content loaded!");
+        dispatchEvent(contentLoadedEvent)
+        contentLoaded = true
+        previousHeight = innerHeight //to have an inital value
+    }, 500); //loading site of website is 500ms min.
+}
+
+const cancelTimer = () => {
+    clearTimeout(timerId)
+}
+
 const onDataFetched = () => {
-    console.log("data fetched")
+    if (contentLoaded) return //Just use for starting content
+    if (timerId)
+        cancelTimer()
+    startTimer()
 }
 
 window.removeEventListener("dataFetched", onDataFetched)
 window.addEventListener("dataFetched", onDataFetched)
+
+// Resize event "override"
+// Catches resize event to check if "real" resize event should be fired.
+// This is necessary, because some mobile browsers trigger resize on scroll (because of navigation bar)
+let previousHeight = null
+const customResizeEvent = new CustomEvent("customResize")
+const determineIfResize = (e) => {
+    const currentHeight = e.target.innerHeight
+    if (currentHeight === previousHeight) {
+        // console.log("height has not changed")
+        return
+    }
+    else {
+        // console.log(`Previous height is ${previousHeight}; Current Height is ${currentHeight}`)
+        const heightDifference = currentHeight - previousHeight
+        // console.log(`Height difference is ${heightDifference}`)
+        const urlBarRange = currentHeight * 0.1
+        if (heightDifference <= urlBarRange && heightDifference > 0) {
+            // console.log("is in range. should not resize")
+            return
+        }
+    }
+    // console.log("setting new height")
+    previousHeight = currentHeight
+    dispatchEvent(customResizeEvent)
+}
+window.removeEventListener("resize", determineIfResize)
+window.addEventListener("resize", determineIfResize)
 
 // export let isMobile = determineIfMobile()
 

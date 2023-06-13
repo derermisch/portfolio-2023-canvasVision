@@ -115,7 +115,7 @@ export default function Formular({ dataForForm }) {
                     </p>
                     <button className="contact--form--submitContainer--submitBtn" type="submit">
                         <p className="contact--form--submitContainer--submitBtn--text">{dataForForm.sendMessage[value]}</p>
-                        <p className="contact--form--submitContainer--submitBtn--symbol">✉️</p>
+                        {/* <p className="contact--form--submitContainer--submitBtn--symbol">✉️</p> */}
                     </button>
                 </div>
             </form>
