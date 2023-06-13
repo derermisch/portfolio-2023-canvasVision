@@ -38,6 +38,10 @@
     }
 }
 
+.nav--linkWrapper--links--link:last-child:hover {
+    text-decoration: none;
+}
+
 .nav--linkWrapper--links--link:hover {
     transform: scale(1.1);
     text-decoration: underline;

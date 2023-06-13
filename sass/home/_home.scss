@@ -34,6 +34,14 @@
     }
 }
 
+@include for-biggerScreens {
+    .home {
+        &--scrollSvg {
+            transform: translate(0, -100%);
+        }
+    }
+}
+
 @include for-tablet {
     .home {
         align-items: center;

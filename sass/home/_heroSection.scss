@@ -7,7 +7,7 @@
     padding-block: $Sites-PaddingBlock;
 
     >* {
-        flex: 1;
+         flex: 1;
     }
 
     &--left {
@@ -23,6 +23,7 @@
 
 .home--heroSection--left {
     &--textContainer {
+        @include flexIt($dir: column, $alignIt: flex-start);
         text-align: left;
         width: 70%;
     }
@@ -39,13 +40,11 @@
     &--heading {
         font-size: $Fs-h1;
         font-weight: bold;
-        line-height: 1;
     }
 
     &--subHeading {
-        margin-top: .5rem;
+        margin-top: 1rem;
         font-size: $Fs-h3;
-        line-height: 1;
     }
 }
 
@@ -78,6 +77,7 @@
         0% {
             border-radius: 30% 5%;
         }
+
         100% {
             border-radius: 5% 30%;
         }
@@ -119,6 +119,7 @@
 
     .home--heroSection--left {
         &--textContainer {
+            align-items: center;
             text-align: center;
         }
     }
@@ -154,14 +155,14 @@
         }
 
         &--subHeading {
+            // width: 70%;
             font-size: $Fs-p;
         }
     }
 
     .home--heroSection--right {
         &--img {
-            width: 80%;
+            width: 70%;
         }
     }
 }
-

@@ -165,6 +165,7 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
         animate()
 
         const onResizeEvent = (e) => {
+            // console.log("resize")
             cancelAnimationFrame(frameId)
             // console.log("client width", document.body.clientWidth, "inner width", window.innerWidth)
             effect.resize()

@@ -65,6 +65,7 @@ body {
   width: 100%;
   font-family: "Lekton", sans-serif;
   font-weight: 400;
+  line-height: 1;
   font-style: normal;
   font-size: 16px;
   color: var(--foreground);
@@ -88,10 +89,11 @@ textarea {
 
 a,
 button {
+  line-height: 1;
   cursor: pointer;
   border-radius: 8px;
   padding-inline: 0.5rem;
-  padding-block: 0.25rem;
+  padding-block: 0.7rem;
   border: none;
 }
 
@@ -321,6 +323,10 @@ button {
   font-size: clamp(1rem, 0.2vw + 1rem, 2rem);
 }
 
+.nav--linkWrapper--links--link:last-child:hover {
+  text-decoration: none;
+}
+
 .nav--linkWrapper--links--link:hover {
   transform: scale(1.1);
   text-decoration: underline;
@@ -400,6 +406,11 @@ button {
   }
 }
 
+@media (width > 2000px) {
+  .home--scrollSvg {
+    transform: translate(0, -100%);
+  }
+}
 @media (max-width: 820px) {
   .home {
     align-items: center;
@@ -439,6 +450,10 @@ button {
 }
 
 .home--heroSection--left--textContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
   text-align: left;
   width: 70%;
 }
@@ -452,12 +467,10 @@ button {
 .home--heroSection--left--textContainer--heading {
   font-size: clamp(2rem, 3.5vw + 1rem, 8rem);
   font-weight: bold;
-  line-height: 1;
 }
 .home--heroSection--left--textContainer--subHeading {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   font-size: clamp(1.2rem, 0.4vw + 1rem, 4rem);
-  line-height: 1;
 }
 
 .home--heroSection--right--canvas {
@@ -511,6 +524,7 @@ button {
     align-items: center;
   }
   .home--heroSection--left--textContainer {
+    align-items: center;
     text-align: center;
   }
   .home--heroSection--right--img {
@@ -529,7 +543,7 @@ button {
     font-size: clamp(1rem, 0.5vw + 0.5rem, 2rem);
   }
   .home--heroSection--right--img {
-    width: 80%;
+    width: 70%;
   }
 }
 .introScroller {
@@ -537,22 +551,27 @@ button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-.introScroller > :nth-child(2) {
-  padding-bottom: 15%;
+  padding-block: 15rem;
+  gap: 30vh;
 }
 
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
 .introScroller--item {
   display: grid;
   place-content: center;
   width: 50%;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1s ease-in-out;
   opacity: 0;
   text-align: center;
 }
 .introScroller--item--heading {
   font-size: clamp(2rem, 3.5vw + 1rem, 8rem);
   font-weight: bold;
+  line-height: 1.5;
 }
 .introScroller--item--buttons {
   margin-top: 3rem;
@@ -562,15 +581,55 @@ button {
   flex-direction: column;
 }
 
+.introScroller--item--heading span {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.introScroller--item--heading span.fade {
+  opacity: 1;
+}
+
 .introScroller--item--buttons > :first-child {
   margin-bottom: 1rem;
 }
 .introScroller--item--buttons > * {
-  background-color: transparent;
   font-size: clamp(1.5rem, 1vw + 1rem, 6rem);
   color: var(--foreground);
-  border: 2px solid var(--foreground);
   border-radius: 8px;
+  transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+  position: relative;
+}
+.introScroller--item--buttons > *:focus,
+.introScroller--item--buttons > *:hover {
+  background-color: var(--clr-action);
+}
+.introScroller--item--buttons > *:focus::before,
+.introScroller--item--buttons > *:hover::before,
+.introScroller--item--buttons > *:hover::after,
+.introScroller--item--buttons > *:hover::before {
+  background: var(--foreground);
+}
+.introScroller--item--buttons > *::after,
+.introScroller--item--buttons > *::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: conic-gradient(from var(--gradient-angle), var(--foreground), var(--background), var(--clr-action), var(--background), var(--foreground));
+  border-radius: inherit;
+  animation: rotateBorder 10s linear infinite;
+  transition: background 500ms infinite;
+}
+.introScroller--item--buttons > *::after {
+  filter: blur(0.2rem);
+}
+@keyframes rotateBorder {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
 }
 
 .introScroller--item.fadeIn {
@@ -589,7 +648,7 @@ button {
 }
 @media (max-width: 600px) {
   .introScroller--item {
-    width: 100%;
+    width: 80%;
   }
   .introScroller--item--buttons > * {
     font-size: clamp(1.2rem, 0.4vw + 1rem, 4rem);

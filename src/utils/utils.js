@@ -22,6 +22,7 @@ const startTimer = () => {
         dispatchEvent(contentLoadedEvent)
         contentLoaded = true
         previousHeight = innerHeight //to have an inital value
+        previousWidth = innerWidth
     }, 500); //loading site of website is 500ms min.
 }
 
@@ -42,27 +43,40 @@ window.addEventListener("dataFetched", onDataFetched)
 // Resize event "override"
 // Catches resize event to check if "real" resize event should be fired.
 // This is necessary, because some mobile browsers trigger resize on scroll (because of navigation bar)
+let previousWidth = null
 let previousHeight = null
 const customResizeEvent = new CustomEvent("customResize")
+const setCurrentAndResize = (newHeight = 0, newWidth = 0) => {
+    // console.log(`setting new dimensions: ${newHeight} ${newWidth}`)
+    previousHeight = newHeight
+    previousWidth = newWidth
+    dispatchEvent(customResizeEvent)
+}
 const determineIfResize = (e) => {
     const currentHeight = e.target.innerHeight
-    if (currentHeight === previousHeight) {
-        // console.log("height has not changed")
+    const currentWidth = e.target.innerWidth
+    // console.log(previousWidth, currentWidth)
+    if (currentHeight !== previousHeight && currentWidth !== previousWidth) {
+        // console.log(currentHeight, currentWidth)
+        setCurrentAndResize(currentHeight, currentWidth)
         return
     }
-    else {
+    // console.log(previousHeight, currentHeight)
+    if (currentHeight !== previousHeight) {
         // console.log(`Previous height is ${previousHeight}; Current Height is ${currentHeight}`)
         const heightDifference = currentHeight - previousHeight
         // console.log(`Height difference is ${heightDifference}`)
         const urlBarRange = currentHeight * 0.1
+        // console.log("range is", urlBarRange)
         if (heightDifference <= urlBarRange && heightDifference > 0) {
             // console.log("is in range. should not resize")
             return
         }
     }
-    // console.log("setting new height")
-    previousHeight = currentHeight
-    dispatchEvent(customResizeEvent)
+    if (currentHeight === previousHeight && currentWidth === previousWidth) {
+        return
+    }
+    setCurrentAndResize(currentHeight, currentWidth)
 }
 window.removeEventListener("resize", determineIfResize)
 window.addEventListener("resize", determineIfResize)

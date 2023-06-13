@@ -10,7 +10,7 @@ export default function Sites() {
         <main className="sites">
             <Home />
             <IntroScroller />
-            <Services />
+            {/* <Services /> */}
             {/* <Projects /> */}
             {/* <AboutMe /> */}
             {/* <Contact /> */}

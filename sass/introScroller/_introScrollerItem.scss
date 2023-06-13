@@ -1,15 +1,22 @@
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
 .introScroller--item {
     // min-height: 100vh;
     display: grid;
     place-content: center;
     width: 50%;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 1s ease-in-out;
     opacity: 0;
     text-align: center;
 
     &--heading {
         font-size: $Fs-h1;
         font-weight: bold;
+        line-height: 1.5;
     }
 
     &--buttons {
@@ -18,16 +25,73 @@
     }
 }
 
+.introScroller--item--heading {
+    span {
+        opacity: 0;
+        transition: opacity 200ms ease;
+    }
+
+    span.fade {
+        opacity: 1;
+    }
+}
+
 .introScroller--item--buttons {
     >:first-child {
         margin-bottom: 1rem;
     }
+
     >* {
-        background-color: transparent;
         font-size: $Fs-h2;
         color: var(--foreground);
-        border: 2px solid var(--foreground);
         border-radius: 8px;
+        transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+        position: relative;
+    }
+
+    >*:focus,
+    >*:hover {
+        background-color: var(--clr-action);
+        // color: var(--background);
+    }
+
+    >*:focus::before,
+    >*:hover::before,
+    >*:hover::after,
+    >*:hover::before {
+        background: var(--foreground);
+    }
+
+    >*::after,
+    >*::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        z-index: -1;
+        background: conic-gradient(from var(--gradient-angle),
+                var(--foreground),
+                var(--background),
+                var(--clr-action),
+                var(--background),
+                var(--foreground),
+            );
+        border-radius: inherit;
+        animation: rotateBorder 10s linear infinite;
+        transition: background 500ms infinite;
+    }
+
+    >*::after {
+        filter: blur(.2rem);
+    }
+
+    @keyframes rotateBorder {
+        0% {
+            --gradient-angle: 0deg;
+        }
+
+        100% {
+            --gradient-angle: 360deg;
+        }
     }
 }
 
@@ -45,13 +109,14 @@
 @include for-tablet {
     .introScroller--item {
         width: 70%;
-    } 
+    }
 }
 
 @include for-phone {
     .introScroller--item {
-        width: 100%;
+        width: 80%;
     }
+
     .introScroller--item--buttons {
         >* {
             font-size: $Fs-h3;

@@ -1,9 +1,7 @@
 .introScroller {
     @include flexIt($dir: column, $justCont: center, $alignIt: center);
-
-    >:nth-child(2) {
-        padding-bottom: 15%;
-    }
+    padding-block: calc($Sites-PaddingBlock * 10);
+    gap: 30vh;
 }
 
 @import "./introScrollerItem";
