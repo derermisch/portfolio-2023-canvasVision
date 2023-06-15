@@ -1,6 +1,9 @@
 .spacer {
     position: absolute;
     left: 0;
+    z-index: -10;
+
+    padding: unset !important;
 
     >* {
         z-index: -10;

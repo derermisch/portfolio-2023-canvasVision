@@ -1,23 +1,33 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
+import { throttle } from "../../utils/utils"
+import { useInView } from "react-intersection-observer"
 
-export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heightMult = 1, widthMult = 1, curve = 1, zoom = 1 , targetElement = null}) {
+export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1, targetElementClassName = null }) {
     const canvasRef = useRef(null)
+    const { ref: inViewRef, inView } = useInView()
+
+    const setRefs = useCallback((node) => {
+        canvasRef.current = node
+        inViewRef(node)
+    }, [inViewRef])
 
     useEffect(() => {
         if (!canvasRef.current) return
+        if (!targetElementClassName) return
+        if (!inView) return
+
+        let frameId = null
+
+        let myTarget = document.querySelector(targetElementClassName)
+        let myTargetRect = myTarget.getBoundingClientRect()
 
         /** @type{HTMLCanvasElement} */
         const canvas = canvasRef.current
         const ctx = canvas.getContext("2d")
 
-        canvas.width = document.body.clientWidth * widthMult
-        canvas.height = window.innerHeight * heightMult
-
-        canvas.style.top = `${100 * pageMult - 100}vh`
-        if (targetElement){
-            canvas.style.top = targetElement.getBoundingClientRect().top + scrollY + "px"
-            canvas.height = targetElement.getBoundingClientRect().height
-        }
+        canvas.width = document.body.clientWidth
+        canvas.height = myTargetRect.height
+        canvas.style.top = myTargetRect.top + Number(scrollY) + "px"
 
         ctx.lineWidth = .6
         ctx.fillStyle = "white"
@@ -27,8 +37,6 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
             // return Math.floor(Math.random() * (y - x + 1)) + x;
             return Math.random() * (y - x + 1) + x;
         }
-
-        let frameId = null
 
         // Class declarations
         class Particle {
@@ -135,16 +143,25 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
                 return angle
             }
             resize() {
-                // canvas.width = window.innerWidth * widthMult
-                // canvas.height = window.innerHeight * heightMult
-                canvas.width = document.body.clientWidth * widthMult
-                canvas.height = window.innerHeight * heightMult
-                canvas.style.top = `${100 * pageMult - 100}vh`
-                if (targetElement){
-                    canvas.style.top = targetElement.getBoundingClientRect().top + scrollY + "px"
-                    canvas.height = targetElement.getBoundingClientRect().height
+                const tmp = document.querySelector(targetElementClassName)
+                const tmpRect = tmp.getBoundingClientRect()
+                if (myTargetRect.top !== tmpRect.top) {
+                    // targetElementClassName === ".services" && console.log("Top difference at " + targetElementClassName)
+                    canvas.style.top = tmpRect.top + Number(scrollY) + "px"
                 }
-                this.init()
+                if (myTargetRect.height !== tmpRect.height) {
+                    // targetElementClassName === ".services" && console.log("Height difference at " + targetElementClassName)
+                    canvas.height = tmpRect.height
+                    this.init()
+                }
+                if (myTargetRect.width !== tmpRect.width) {
+                    // targetElementClassName === ".services" && console.log("Width difference at " + targetElementClassName)
+                    canvas.width = document.body.clientWidth
+                    this.init()
+
+                }
+                myTarget = tmp
+                myTargetRect = tmpRect
             }
             render() {
                 this.particles.forEach(particle => {
@@ -165,7 +182,6 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
         animate()
 
         const onResizeEvent = (e) => {
-            // console.log("resize")
             cancelAnimationFrame(frameId)
             // console.log("client width", document.body.clientWidth, "inner width", window.innerWidth)
             effect.resize()
@@ -173,15 +189,18 @@ export default function BackgroundCanvas({ pageMult = 1, shape = "normal", heigh
         }
 
         window.addEventListener("customResize", onResizeEvent)
+        window.addEventListener("dataFetched", onResizeEvent)
 
         return () => {
+            // console.log(`Cancel frame ${frameId} at ${targetElementClassName}`)
             cancelAnimationFrame(frameId)
             window.removeEventListener("customResize", onResizeEvent)
+            window.removeEventListener("dataFetched", onResizeEvent)
         }
 
-    }, [canvasRef, pageMult, shape, heightMult, widthMult, curve, zoom, targetElement])
+    }, [setRefs, shape, curve, zoom, targetElementClassName, inView])
 
     return (
-        <canvas className="backgroundCanvas" ref={canvasRef}></canvas>
+        <canvas className="backgroundCanvas" ref={setRefs}></canvas>
     )
 }

@@ -5,6 +5,7 @@ import { SettingsContext } from "../general/SettingsContext"
 import BackgroundCanvas from "../general/BackgroundCanvas"
 import Spacer from "../general/Spacer"
 import { useInView } from "react-intersection-observer"
+import { drawDebugRect } from "../../utils/debug"
 
 const serviceItemVisibleEvent = new CustomEvent("serviceItemVisible", {
     detail: {
@@ -75,7 +76,6 @@ export default function Services() {
             lineLoading.style.strokeDashoffset = progress
 
             // check if there are routes which should be "activated", meaning their animation should start
-            const activated = []
             for (let i = 0; i < routes.length; i++) {
                 const progressPercent = 1 - (progress / lineLength)
                 const stepRoute = (routes[i].getBoundingClientRect().top + routes[i].getBoundingClientRect().height / 2 - top) / lineLength
@@ -125,7 +125,8 @@ export default function Services() {
         const resizeSvgLine = () => {
             // configure svg
             svgEle.setAttribute("viewBox", `0 0 ${document.body.clientWidth} ${gridHeight}`);
-            svgEle.style.top = headingEle.getBoundingClientRect().bottom + scrollY
+            // drawDebugRect(headingEle.getBoundingClientRect().top + Number(scrollY))
+            // svgEle.style.top = headingEle.getBoundingClientRect().bottom + Number(scrollY) + "px"
 
             // configure lines to have length of grid (+ margin)
             lineMain.setAttribute("x1", document.body.clientWidth / 2)
@@ -156,7 +157,7 @@ export default function Services() {
         setGridHeight(() => Number(containerHeight) + convertRemToPixels(12))
     }
 
-    return (
+    return (<>
         <section className="services">
             <h1 className="services--heading" ref={headingRef}>Services</h1>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" ref={setRefs} className="services--line">
@@ -169,17 +170,13 @@ export default function Services() {
             >
                 <ServiceItemContainer lan={value} signalFunc={signalReady} />
             </DataSource>
-            {gridHeight && <BackgroundCanvas pageMult={4} targetElement={document.querySelector(".services")}/>}
-            {gridHeight && <DataSource
-                getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
-                resourceName="spacerRes">
-                <Spacer pageMult={1} targetElement={document.querySelector(".services")} />
-            </DataSource> }
-            {/* <DataSource
-                getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
-                resourceName="spacerRes">
-                <Spacer pageMult={4} />
-            </DataSource> */}
         </section>
+        <BackgroundCanvas targetElementClassName=".services" shape="90deg_up"/>
+        <DataSource
+            getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
+            resourceName="spacerRes">
+            <Spacer targetElementClassName=".services" />
+        </DataSource>
+    </>
     )
 }

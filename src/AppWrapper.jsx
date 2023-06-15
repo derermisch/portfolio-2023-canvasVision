@@ -33,7 +33,7 @@ export default function AppWrapper() {
     useEffect(() => {
         const onContentLoaded = () => {
             setAllLoaded(() => true)
-            window.scrollTo({top: 0, behavior: "instant"})
+            // window.scrollTo({top: 0, behavior: "instant"})
         }
 
         window.addEventListener("contentLoaded", onContentLoaded)

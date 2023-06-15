@@ -25,13 +25,13 @@ $routeSize: 1rem;
     }
 
     &--item {
-        @include flexIt();
+        @include flexIt($justCont: flex-end);
         //With min-width: 0, the flex-box can shrink below its minimun content site
         //Meaning it can shrink below the length of the longest word or fixed-size element
         //https://stackoverflow.com/questions/12022288/how-to-keep-a-flex-item-from-overflowing-due-to-its-text/12131365#12131365
         min-width: 0;
         column-gap: 3rem;
-        width: 100%;
+        // width: 100%;
         // line-break: anywhere;
     }
 }

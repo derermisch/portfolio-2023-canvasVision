@@ -44,6 +44,7 @@ textarea {
 
 a,
 button {
+    user-select: none;
     line-height: 1;
     cursor: pointer;
     border-radius: 8px;

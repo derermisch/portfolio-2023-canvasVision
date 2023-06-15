@@ -89,6 +89,9 @@ textarea {
 
 a,
 button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   line-height: 1;
   cursor: pointer;
   border-radius: 8px;
@@ -222,11 +225,14 @@ button {
   left: 0;
   background-color: var(--background);
   transform-origin: center;
+  padding: unset !important;
 }
 
 .spacer {
   position: absolute;
   left: 0;
+  z-index: -10;
+  padding: unset !important;
 }
 .spacer > * {
   z-index: -10;
@@ -701,13 +707,12 @@ button {
 }
 .service--itemContainer--item {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: row;
   min-width: 0;
   -moz-column-gap: 3rem;
        column-gap: 3rem;
-  width: 100%;
 }
 
 .service--itemContainer--item--text {
