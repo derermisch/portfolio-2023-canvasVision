@@ -1,10 +1,15 @@
 .contact {
     min-height: 100vh;
+    padding-block: $Sites-PaddingBlock-Big;
+    @include flexIt($dir: column);
+    // display: grid;
+    // place-content: center;
 
     &--heading {
         font-size: $Fs-h1;
         text-align: center;
         font-weight: bold;
+        margin-bottom: 2rem;
     }
 }
 

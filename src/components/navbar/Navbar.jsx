@@ -10,7 +10,7 @@ export default function () {
 
     return (
         <nav className="nav">
-            <SettingsToggle />
+            <SettingsToggle renderDarkModeToggle={false} />
             <DataSource
                 getDataFunc={getServerData('*[_type == "nav"].navlink[]{ navlink,link}')}
                 resourceName="navlinkData"

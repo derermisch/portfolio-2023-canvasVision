@@ -8,7 +8,7 @@
     &--scrollSvg {
         // stroke: var(--foreground);
         fill: var(--foreground);
-        z-index: 1;
+        z-index: 10;
         transform: translate(0, -60%);
     }
 }
@@ -37,7 +37,7 @@
 @include for-biggerScreens {
     .home {
         &--scrollSvg {
-            transform: translate(0, -100%);
+            transform: translate(0, -110%);
         }
     }
 }

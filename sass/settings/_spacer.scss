@@ -1,12 +1,13 @@
 .spacer {
+    // background-color: var(--foreground);
     position: absolute;
     left: 0;
-    z-index: -10;
+    z-index: 1;
 
     padding: unset !important;
 
     >* {
-        z-index: -10;
+        z-index: -5;
         aspect-ratio: 1000/64;
         background-repeat: no-repeat;
         background-position: center;

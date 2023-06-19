@@ -38,6 +38,14 @@ $routeSize: 1rem;
 
 @import "serviceItem";
 
+@include for-fullHD-andBigger {
+    .service--itemContainer {
+        &--item {
+            width: 70%;
+        }
+    }
+}
+
 @include for-smallLaptop {
     .service--itemContainer {
         &--item {

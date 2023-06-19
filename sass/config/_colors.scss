@@ -1,20 +1,27 @@
 :root {
     --clr-primary: #272727;
     --clr-secondary: #EFE9E7;
-    // --clr-action: #59A96A;
-    --clr-action: #2B50AA;
-    //https://coolors.co/272727-efe9e7-248232-2ba84a-2b50aa
+    --clr-action: #A52422;
+    --clr-grad-one: #00A878;
+    --clr-grad-two: #5603AD;
 
     --foreground: var(--clr-primary);
     --background: var(--clr-secondary);
+
+    --gradient-one: var(--clr-grad-one);
+    --gradient-two: var(--clr-grad-two);
 }
 
 .dark {
     --foreground: var(--clr-secondary);
     --background: var(--clr-primary);
+    --gradient-one: var(--clr-grad-one);
+    --gradient-two: var(--clr-grad-two);
 }
 
 .light {
     --foreground: var(--clr-primary);
     --background: var(--clr-secondary);
+    --gradient-one: var(--clr-grad-one);
+    --gradient-two: var(--clr-grad-two);
 }

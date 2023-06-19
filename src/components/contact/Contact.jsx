@@ -6,7 +6,7 @@ import Spacer from "../general/Spacer"
 
 export default function Contact() {
     return (<>
-        <section className="contact">
+        <section className="contact site">
             {/* <BackgroundCanvas pageMult={4} /> */}
             <DataSource
                 getDataFunc={getServerData('*[_type == "contact"][0].heading')}
@@ -22,7 +22,7 @@ export default function Contact() {
                 <Formular />
             </DataSource>
         </section>
-        <BackgroundCanvas targetElementClassName=".contact" />
+        {/* <BackgroundCanvas targetElementClassName=".contact" /> */}
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">

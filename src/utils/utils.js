@@ -14,7 +14,8 @@ export const determineTouchScreen = () => {
 //
 let timerId = null
 const contentLoadedEvent = new CustomEvent("contentLoaded")
-let contentLoaded = false
+let contentLoaded = true
+dispatchEvent(contentLoadedEvent)
 
 const startTimer = () => {
     timerId = setTimeout(() => {
@@ -31,10 +32,11 @@ const cancelTimer = () => {
 }
 
 const onDataFetched = () => {
+    dispatchEvent(contentLoadedEvent)
     if (contentLoaded) return //Just use for starting content
-    if (timerId)
-        cancelTimer()
-    startTimer()
+    // if (timerId)
+    //     cancelTimer()
+    // startTimer()
 }
 
 window.removeEventListener("dataFetched", onDataFetched)

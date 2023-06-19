@@ -11,6 +11,12 @@
     }
 }
 
+@mixin for-fullHD-andBigger {
+    @media (width >=1920px) {
+        @content;
+    }
+}
+
 @mixin for-smallLaptop {
     @media (max-width: 1024px) {
         @content;

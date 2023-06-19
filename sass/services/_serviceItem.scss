@@ -103,3 +103,11 @@
         }
     }
 }
+
+@include for-phone-medium {
+    .service--itemContainer--item {
+        &--text {
+            font-size: 14px;
+        }
+    }
+}

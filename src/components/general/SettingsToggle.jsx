@@ -8,12 +8,12 @@ import { getCurrentLightModeInputstate, toggleCurrentLightMode } from "../../uti
 
 const notifyLightModeChangeEvent = new CustomEvent("notifyLightMode")
 
-export default function SettingsToggle() {
+export default function SettingsToggle({ renderDarkModeToggle = true, renderLangToggle = true }) {
     const { value, setValue } = useContext(SettingsContext)
 
     return (
         <div className="settingsToggle">
-            <ToggleContainer
+            {renderDarkModeToggle && <ToggleContainer
                 className="toggle"
                 left={
                     // sun
@@ -36,8 +36,8 @@ export default function SettingsToggle() {
                     </svg>
                 }
                 isCheckedFunction={getCurrentLightModeInputstate}
-            />
-            <ToggleContainer
+            />}
+            {renderLangToggle && <ToggleContainer
                 // className="settingsToggle--language"
                 className="toggle"
                 left={
@@ -59,7 +59,7 @@ export default function SettingsToggle() {
                     </svg>
                 }
                 isCheckedFunction={getCurrentLanguageInputstate}
-            />
+            />}
         </div>
     )
 }

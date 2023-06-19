@@ -77,6 +77,8 @@ export default function Formular({ dataForForm }) {
 
                 <label className="contact--form--nameLabel" htmlFor="name">{dataForForm.name[value]}</label>
                 <input
+                    autoComplete="name"
+                    id="name"
                     name="name"
                     type="text"
                     className="contact--form--nameField"
@@ -89,6 +91,8 @@ export default function Formular({ dataForForm }) {
 
                 <label className="contact--form--emailLabel" htmlFor="email">{dataForForm.email[value]}</label>
                 <input
+                    autoComplete="email"
+                    id="email"
                     name="email"
                     type="email"
                     className="contact--form--emailField"
@@ -100,6 +104,8 @@ export default function Formular({ dataForForm }) {
 
                 <label className="contact--form--messageLabel" htmlFor="nachricht">{dataForForm.message[value]}</label>
                 <textarea
+                    autoComplete="off"
+                    id="nachricht"
                     name="nachricht"
                     className="contact--form--messageLabel"
                     placeholder="Nachricht*"

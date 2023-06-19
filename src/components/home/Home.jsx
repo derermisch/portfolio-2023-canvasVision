@@ -11,7 +11,7 @@ export default function Home() {
     const value = useContext(SettingsContext).value
 
     return (<>
-        <section className="home">
+        <section className="home site">
             <Navbar />
             <HeroSection />
             <svg className="home--scrollSvg" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,11 +20,11 @@ export default function Home() {
                 <path className="home--scrollSvg--arrow" d="M20.896 50.944C20.704 51.168 20.48 51.552 20.32 51.776C20.032 52.288 31.2 63.68 32 63.68C32.256 63.68 34.976 61.184 38.016 58.144C43.712 52.448 44.256 51.616 42.848 50.848C42.208 50.528 41.728 50.944 37.088 55.552L32 60.64L26.944 55.584C24.192 52.832 21.76 50.56 21.568 50.56C21.344 50.56 21.056 50.752 20.896 50.944Z" fill="#2B50AA" />
             </svg>
         </section>
-        <BackgroundCanvas targetElementClassName=".home" />
+        {/* <BackgroundCanvas targetElementClassName=".home" /> */}
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">
-            <Spacer pageMult={1} targetElementClassName=".home" />
+            <Spacer targetElementClassName=".home" />
         </DataSource>
     </>
     )

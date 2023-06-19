@@ -11,24 +11,13 @@ export default function ReactSpacer({ spacerRes, targetElementClassName = null }
         if (!spacerRes) return
         if (!targetElementClassName) return
 
-        let myTarget = document.querySelector(targetElementClassName)
-        let myTargetRect = myTarget.getBoundingClientRect()
+        let myTargetRect = document.querySelector(targetElementClassName).getBoundingClientRect()
 
         /** @type{HTMLElement} */
         const container = containerRef.current
         const lowerSpacer = container.lastChild
         let spacerCode = spacerRes.spacerSvgCode
-
-        const setup = () => {
-            const svg64 = window.btoa(spacerCode)
-            container.childNodes.forEach(child => {
-                child.style.backgroundImage = `url('data:image/svg+xml;base64,${svg64}')`
-                child.style.width = document.documentElement.clientWidth + "px"
-            })
-            lowerSpacer.style.rotate = "180deg"
-            container.style.top = myTargetRect.height + myTargetRect.top + Number(scrollY) - container.getBoundingClientRect().height / 2 + "px"
-        }
-        setup()
+        let initialSetup = true
 
         const adjustSpacerCodeBasedOnLightMode = () => {
             let newColor = "#22222"
@@ -37,37 +26,44 @@ export default function ReactSpacer({ spacerRes, targetElementClassName = null }
         }
         adjustSpacerCodeBasedOnLightMode()
 
-        const setUpSpacer = () => {
-            // Get updated reference (including updated bounding box), but just if sizing has changed
-            const tmp = document.querySelector(targetElementClassName)
-            const tmpRect = tmp.getBoundingClientRect()
-            if (myTargetRect.height !== tmpRect.height || myTargetRect.width !== tmpRect.width || myTargetRect.top !== tmpRect.top) {
-                // console.log("There is a height difference")
-                myTarget = tmp
-                myTargetRect = tmpRect
-
-            } else {
-                // console.log("nothing changed")
-                return
+        const setup = () => {
+            if (!initialSetup) {
+                const tmpRect = document.querySelector(targetElementClassName).getBoundingClientRect()
+                if (tmpRect.width === myTargetRect.width && tmpRect.height === myTargetRect.height) {
+                    return
+                }
+                myTargetRect = document.querySelector(targetElementClassName).getBoundingClientRect()
             }
-            setup()
+            else {
+                myTargetRect = document.querySelector(targetElementClassName).getBoundingClientRect()
+                initialSetup = false
+            }
+            // console.log("setup")
+            const svg64 = window.btoa(spacerCode)
+            container.childNodes.forEach(child => {
+                child.style.backgroundImage = `url('data:image/svg+xml;base64,${svg64}')`
+                child.style.width = document.body.clientWidth + "px"
+            })
+            lowerSpacer.style.rotate = "180deg"
+            container.style.top = myTargetRect.height + myTargetRect.top + Number(scrollY) - container.getBoundingClientRect().height / 2 + "px"
         }
-        setUpSpacer()
+        setup()
 
-        const onLightModeChange = () => {
+        const onLightModeChanged = () => {
             adjustSpacerCodeBasedOnLightMode()
+            initialSetup = true
             setup()
         }
 
         // Has to also fire on dataFetched, because fetched data will change the size of the target Element
-        window.addEventListener("customResize", setUpSpacer)
-        window.addEventListener("notifyLightMode", onLightModeChange)
-        window.addEventListener("dataFetched", setUpSpacer)
+        window.addEventListener("customResize", setup)
+        window.addEventListener("notifyLightMode", onLightModeChanged)
+        window.addEventListener("dataFetched", setup)
 
         return () => {
-            window.removeEventListener("resize", setUpSpacer)
-            window.removeEventListener("notifyLightMode", onLightModeChange)
-            window.removeEventListener("dataFetched", setUpSpacer)
+            window.removeEventListener("customResize", setup)
+            window.removeEventListener("notifyLightMode", onLightModeChanged)
+            window.removeEventListener("dataFetched", setup)
         }
     }, [containerRef, spacerRes, targetElementClassName])
 

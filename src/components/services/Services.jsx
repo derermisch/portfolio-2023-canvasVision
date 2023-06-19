@@ -5,7 +5,7 @@ import { SettingsContext } from "../general/SettingsContext"
 import BackgroundCanvas from "../general/BackgroundCanvas"
 import Spacer from "../general/Spacer"
 import { useInView } from "react-intersection-observer"
-import { drawDebugRect } from "../../utils/debug"
+import CustomButton from "./CustomButton"
 
 const serviceItemVisibleEvent = new CustomEvent("serviceItemVisible", {
     detail: {
@@ -14,10 +14,10 @@ const serviceItemVisibleEvent = new CustomEvent("serviceItemVisible", {
 })
 
 export default function Services() {
+    const [contactBtnVisible, setContactBtnVisible] = useState(() => false)
     const value = useContext(SettingsContext).value
     const lineRef = useRef(null)
     const headingRef = useRef(null)
-    const loadingLineRef = useRef(null)
     const [gridHeight, setGridHeight] = useState(() => 0)
     const { ref: inViewRef, inView } = useInView({
         threshold: .1
@@ -31,19 +31,6 @@ export default function Services() {
     function convertRemToPixels(rem) {
         return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
     }
-
-    // useEffect(() => {
-    //     if (gridHeight === 0) return
-    //     if (!lineRef.current) return
-
-    //     if (!inView) {
-    //         console.log("sdt")
-    //         /** @type{HTMLElement} */
-    //         const linesSvg = lineRef.current
-    //         const lineLoading = linesSvg.childNodes[1]
-    //         lineLoading.style.strokeDashoffset = 0
-    //     }
-    // }, [gridHeight, lineRef, inView])
 
     useEffect(() => {
         if (gridHeight === 0) return
@@ -74,10 +61,15 @@ export default function Services() {
             if (progress < 0)
                 return
             lineLoading.style.strokeDashoffset = progress
+            const progressPercent = 1 - (progress / lineLength)
+            if (progressPercent >= 1) {
+                setContactBtnVisible(true)
+            } else {
+                setContactBtnVisible(false)
+            }
 
             // check if there are routes which should be "activated", meaning their animation should start
             for (let i = 0; i < routes.length; i++) {
-                const progressPercent = 1 - (progress / lineLength)
                 const stepRoute = (routes[i].getBoundingClientRect().top + routes[i].getBoundingClientRect().height / 2 - top) / lineLength
 
                 if (progressPercent > stepRoute) {
@@ -158,7 +150,7 @@ export default function Services() {
     }
 
     return (<>
-        <section className="services">
+        <section className="services site">
             <h1 className="services--heading" ref={headingRef}>Services</h1>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" ref={setRefs} className="services--line">
                 <line className="services--line--main" x1="50" y1="0" x2="50" y2="100" stroke="black" />
@@ -170,8 +162,14 @@ export default function Services() {
             >
                 <ServiceItemContainer lan={value} signalFunc={signalReady} />
             </DataSource>
+            <DataSource
+                getDataFunc={getServerData('*[_type == "services"][0].contactBtn')}
+                resourceName={"btnText"}
+            >
+                <CustomButton lan={value} className={`services--toContactButton ${contactBtnVisible && "fadeIn"}`}/>
+            </DataSource>
         </section>
-        <BackgroundCanvas targetElementClassName=".services" shape="90deg_up"/>
+        {/* <BackgroundCanvas targetElementClassName=".services" shape="90deg_up" /> */}
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">

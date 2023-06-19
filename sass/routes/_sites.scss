@@ -1,16 +1,22 @@
-.sites > * , .site {
-    // min-height: 100vh;
+.sites>* {
     padding-block: $Sites-PaddingBlock;
     padding-inline: $Sites-PaddingInline;
 }
 
 .site {
-    // min-height: 100vh;
-    @include flexIt($dir: column, $justCont: flex-start);
+    background-color: var(--background);
+    $thickness: 5%;
+    $multiplier: 5;
+    background-image:
+        linear-gradient(var(--gradient-one) $thickness,
+            var(--gradient-two) calc($thickness * $multiplier),
+            var(--background));
 }
 
-@include for-phone{
-    .sites > *, .site {
+@include for-phone {
+
+    .sites>*,
+    .site {
         padding-block: $Sites-PaddingBlock-Mobile;
         padding-inline: $Sites-PaddingInline-Mobile;
     }

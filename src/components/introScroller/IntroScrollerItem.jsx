@@ -9,7 +9,7 @@ export default function IntroScrollerItem({ lan, introButtons = false, introScro
     const { ref: textRef, inView, entry } = useInView({
         /* Optional options */
         threshold: .6,
-        triggerOnce: true
+        triggerOnce: false
     });
     const headingRef = useRef(null)
 
@@ -78,8 +78,16 @@ export default function IntroScrollerItem({ lan, introButtons = false, introScro
                 </h1>
                 {introButtons &&
                     <div className="introScroller--item--buttons">
-                        <a className="introScroller--item--buttons--aboutMe">{introScrollData.buttonTop[lan]}</a>
-                        <a className="introScroller--item--buttons--myProjects">{introScrollData.buttonBottom[lan]}</a>
+                        <a className="introScroller--item--buttons--aboutMe">
+                            {introScrollData.buttonTop[lan]}
+                            <p className="introScroller--item--buttons--aboutMe--textBackground" />
+                            <div className="introScroller--item--buttons--aboutMe--effect" />
+                        </a>
+                        <a className="introScroller--item--buttons--myProjects">
+                            {introScrollData.buttonBottom[lan]}
+                            <p className="introScroller--item--buttons--aboutMe--textBackground" />
+                            <div className="introScroller--item--buttons--aboutMe--effect" />
+                        </a>
                     </div>
                 }
             </div >

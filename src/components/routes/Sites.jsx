@@ -11,8 +11,6 @@ export default function Sites() {
             <Home />
             <IntroScroller />
             <Services />
-            {/* <Projects /> */}
-            {/* <AboutMe /> */}
             <Contact />
         </main>
     )

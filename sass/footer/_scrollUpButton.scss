@@ -1,9 +1,11 @@
 .anfahrt--scrollUpBtn {
-    opacity: 0;
+    opacity: 1;
     border: none;
     position: sticky;
+    // position: absolute;
+    z-index: 5;
     bottom: $Sites-PaddingBlock;
-    background-color: var(--foreground);
+    background-color: var(--background);
     // transform: translateX(calc(50vw - 64px / 2)) translateY(32px);
     transform: translateX(calc(100vw - 64px - 6rem)) translateY(32px);
     width: 64px;
@@ -18,9 +20,9 @@
         width: 32px;
         height: 32px;
         transform: rotate(180deg);
-        stroke: var(--background);
+        stroke: var(--foreground);
         >path {
-            fill: var(--background);
+            fill: var(--foreground);
         }
     }
 }

@@ -3,7 +3,9 @@
     grid-template-rows: repeat(4, min-content);
     grid-template-columns: max-content 1fr;
     row-gap: .5rem;
-    column-gap: 4em;
+    column-gap: 4rem;
+    max-width: 1000px;
+    width: 90%;
 
     >label {
         font-size: $Fs-h4;
@@ -11,18 +13,17 @@
 
     >input,
     >textarea {
-        @include flexIt();
         padding: 1rem;
         border: 2px solid var(--foreground);
         border-radius: 8px;
-        background-color: transparent;
+        background-color: var(--background);
         font-size: $Fs-p;
         font-family: 'Lekton', sans-serif;
         color: var(--foreground);
 
-        // &::placeholder {
-        //     visibility: hidden;
-        // }
+        &::placeholder {
+            font-style: italic;
+        }
 
         &:focus {
             outline: none;
@@ -41,18 +42,20 @@
 .contact--form--submitContainer {
     grid-column: 2 / 3;
     @include flexIt($dir: column, $alignIt: flex-start);
+    row-gap: .5rem;
 
     &--text {
+        background-color: var(--background);
         font-size: $Fs-p-small;
     }
 }
 
 .contact--form--submitContainer--submitBtn {
-    white-space: nowrap;
-    display: inline-flex;
-    gap: .25rem;
-    border: 2px solid var(--clr-action);
-    padding: .25rem;
+    // white-space: nowrap;
+    // display: inline-flex;
+    // gap: .25rem;
+    // border: 2px solid var(--clr-action);
+    background-color: var(--clr-action);
     font-size: $Fs-h3;
     cursor: pointer;
 }
@@ -86,6 +89,7 @@
 @include for-phone {
     .contact--form {
         margin-left: unset;
+        width: 100%;
         // margin-top: unset;
 
         grid-template-rows: unset;
@@ -94,11 +98,11 @@
         column-gap: unset;
         @include flexIt($dir: column, $alignIt: flex-start);
 
-        > * {
+        >* {
             width: 100%;
         }
 
-        > label {
+        >label {
             display: none;
         }
 

@@ -17,6 +17,7 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
+    "alea": "^1.0.1",
     "dotenv": "^16.0.3",
     "html2canvas": "^1.4.1",
     "react": "^18.2.0",
@@ -25,6 +26,7 @@
     "react-intersection-observer": "^9.4.4",
     "react-router-dom": "^6.11.1",
     "react-spinners": "^0.13.8",
+    "simplex-noise": "^4.0.1",
     "typewriter-effect": "^2.20.1",
     "use-resize-observer": "^9.1.0",
     "uuid": "^9.0.0"

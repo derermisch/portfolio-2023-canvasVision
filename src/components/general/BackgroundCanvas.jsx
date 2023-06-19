@@ -1,6 +1,8 @@
 import { useEffect, useRef, useCallback } from "react"
 import { throttle } from "../../utils/utils"
 import { useInView } from "react-intersection-observer"
+import { createNoise2D } from "simplex-noise"
+import alea from "alea"
 
 export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1, targetElementClassName = null }) {
     const canvasRef = useRef(null)
@@ -17,6 +19,7 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
         if (!inView) return
 
         let frameId = null
+        let lastTime = 0
 
         let myTarget = document.querySelector(targetElementClassName)
         let myTargetRect = myTarget.getBoundingClientRect()
@@ -46,7 +49,8 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
                 this.y = Math.floor(Math.random() * canvas.height)
                 this.speedX
                 this.speedY
-                this.speedModifer = Math.floor(Math.random() * 5 + 1)
+                this.initialSpeedBost = true
+                this.speedModifer = Math.floor(Math.random() * 5 + 1) * 50
                 this.history = [{ x: this.x, y: this.y }]
                 this.maxLength = Math.floor(Math.random() * 200 + 10)
                 this.angle = 0
@@ -66,7 +70,7 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
                 ctx.strokeStyle = this.color
                 ctx.stroke()
             }
-            update() {
+            update(dt) {
                 this.timer--
                 if (this.timer >= 1) {
                     // Assign cell to flow field
@@ -78,8 +82,18 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
                     // Movement
                     this.speedX = Math.cos(this.angle)
                     this.speedY = Math.sin(this.angle)
-                    this.x += this.speedX * this.speedModifer
-                    this.y += this.speedY * this.speedModifer
+
+                    // This is used to initially render framerate independent, so the effect is cleary visible from the start 
+                    if (this.initialSpeedBost) {
+                        this.x += this.speedX * Math.floor(Math.random() * 5 + 1)
+                        this.y += this.speedY * Math.floor(Math.random() * 5 + 1)
+                        setTimeout(() => {
+                            this.initialSpeedBost = false
+                        }, 400)
+                    } else {
+                        this.x += this.speedX * this.speedModifer * dt
+                        this.y += this.speedY * this.speedModifer * dt
+                    }
 
                     // Trail
                     this.history.push({ x: this.x, y: this.y })
@@ -103,7 +117,7 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
             constructor() {
                 this.particles = []
                 this.numberOfParicles = 500
-                this.cellSize = 20
+                this.cellSize = 10
                 this.rows
                 this.cols
                 this.flowField = []
@@ -117,10 +131,13 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
                 this.rows = Math.floor(canvas.height / this.cellSize)
                 this.cols = Math.floor(canvas.width / this.cellSize)
                 this.flowField = []
+                // const prng = alea("seed")
+                // const noise2D = createNoise2D(prng)
                 for (let y = 0; y < this.rows; y++) {
                     for (let x = 0; x < this.cols; x++) {
                         // let angle = shapeProvider(x, y, shapeFunction_exp, this.zoom, this.curve)
                         let angle = this.getAngle(x, y, shape)
+                        // let angle = noise2D(x / 100, y / 100)
                         this.flowField.push(angle)
                     }
                 }
@@ -163,10 +180,10 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
                 myTarget = tmp
                 myTargetRect = tmpRect
             }
-            render() {
+            render(dt) {
                 this.particles.forEach(particle => {
                     particle.draw()
-                    particle.update()
+                    particle.update(dt)
                 })
             }
         }
@@ -174,9 +191,12 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
         // Code execution
         const effect = new Effect()
 
-        const animate = () => {
+        const animate = (timestamp) => {
+            const dt = (timestamp - lastTime) / 1000
+            lastTime = timestamp
+
             ctx.clearRect(0, 0, canvas.width, canvas.height)
-            effect.render()
+            effect.render(dt)
             frameId = requestAnimationFrame(animate)
         }
         animate()
@@ -194,6 +214,8 @@ export default function BackgroundCanvas({ shape = "normal", curve = 1, zoom = 1
         return () => {
             // console.log(`Cancel frame ${frameId} at ${targetElementClassName}`)
             cancelAnimationFrame(frameId)
+            canvas.width = 0
+            canvas.height = 0
             window.removeEventListener("customResize", onResizeEvent)
             window.removeEventListener("dataFetched", onResizeEvent)
         }
