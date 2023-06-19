@@ -4,4 +4,11 @@
     gap: 30vh;
 }
 
+@include for-phone {
+    .introScroller {
+        padding-block: calc($Sites-PaddingBlock * 5);
+        gap: 25vh;
+    }
+}
+
 @import "./introScrollerItem";

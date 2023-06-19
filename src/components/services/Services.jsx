@@ -118,7 +118,7 @@ export default function Services() {
             // configure svg
             svgEle.setAttribute("viewBox", `0 0 ${document.body.clientWidth} ${gridHeight}`);
             // drawDebugRect(headingEle.getBoundingClientRect().top + Number(scrollY))
-            // svgEle.style.top = headingEle.getBoundingClientRect().bottom + Number(scrollY) + "px"
+            svgEle.style.top = headingEle.getBoundingClientRect().bottom + Number(scrollY) + "px"
 
             // configure lines to have length of grid (+ margin)
             lineMain.setAttribute("x1", document.body.clientWidth / 2)

@@ -54,7 +54,16 @@
 @include for-phone {
     .home {
         &--scrollSvg {
+            width: 42px;
             transform: translate(0, -50%);
+        }
+    }
+}
+
+@include for-small-height {
+    .home {
+        &--scrollSvg {
+            transform: unset;
         }
     }
 }

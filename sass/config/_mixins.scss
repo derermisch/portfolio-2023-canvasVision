@@ -59,10 +59,16 @@
     @media screen {
 
         // @media ((max-height: 600px) and (orientation: landscape)), (max-width: 500px) {
-        @media ((max-height: 600px) and (orientation: landscape)),
+        @media ((max-height: 800px) and (orientation: landscape)),
         (max-width: 768px) {
             @content;
         }
+    }
+}
+
+@mixin for-small-height {
+    @media (max-height: 800px) {
+        @content;
     }
 }
 

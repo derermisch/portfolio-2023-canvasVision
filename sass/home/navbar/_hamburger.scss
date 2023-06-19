@@ -1,11 +1,13 @@
 .hamburgerContainer {
     background-color: transparent;
     border: none;
-    z-index: 5;
+    z-index: 100;
     display: none;
-    position: absolute;
-    top: 32px;
-    right: 32px;
+    // position: absolute;
+    // top: 32px;
+    // right: 32px;
+    padding-inline: 0;
+    padding-block: 0;
 }
 
 $hamburgerWidth: 40px;
@@ -14,8 +16,8 @@ $hamburgerWidth: 40px;
     background-color: transparent;
     width: $hamburgerWidth;
     cursor: pointer;
-    stroke: var(--foreground);
-    fill: var(--foreground);
+    stroke: var(--background);
+    fill: var(--background);
 }
 
 .hamburger .line {
@@ -24,12 +26,12 @@ $hamburgerWidth: 40px;
 }
 
 .openHamburger {
-    z-index: 2;
+    z-index: 100;
     // position: fixed;
     top: calc($Sites-PaddingBlock-Mobile);
     right: calc($Sites-PaddingBlock-Mobile);
-    stroke: var(--background);
-    fill: var(--background);
+    stroke: var(--foreground);
+    fill: var(--foreground);
 
     .top {
         transform: rotateZ(45deg) translateY(20%);

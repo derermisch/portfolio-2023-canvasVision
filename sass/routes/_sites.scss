@@ -4,6 +4,7 @@
 }
 
 .site {
+    @include flexIt($dir: column, $justCont: center, $alignIt: center);
     background-color: var(--background);
     $thickness: 5%;
     $multiplier: 5;
