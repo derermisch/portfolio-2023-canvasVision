@@ -166,7 +166,12 @@ export default function Services() {
                 getDataFunc={getServerData('*[_type == "services"][0].contactBtn')}
                 resourceName={"btnText"}
             >
-                <CustomButton lan={value} className={`services--toContactButton ${contactBtnVisible && "fadeIn"}`}/>
+                <CustomButton
+                    onClickFunction={() => document.querySelector(".contact").scrollIntoView({ behavior: "smooth" })}
+                    lan={value}
+                    className={`services--toContactButton ${contactBtnVisible && "fadeIn"}`}
+                    showArrow={true}
+                />
             </DataSource>
         </section>
         {/* <BackgroundCanvas targetElementClassName=".services" shape="90deg_up" /> */}

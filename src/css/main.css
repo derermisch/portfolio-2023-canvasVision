@@ -1180,7 +1180,7 @@ button {
   padding: 1rem;
   border: 2px solid var(--foreground);
   border-radius: 8px;
-  background-color: var(--background);
+  background-color: transparent;
   font-size: clamp(0.9rem, 0.5vw + 0.5rem, 2rem);
   font-family: "Lekton", sans-serif;
   color: var(--foreground);
@@ -1213,7 +1213,7 @@ button {
   row-gap: 0.5rem;
 }
 .contact--form--submitContainer--text {
-  background-color: var(--background);
+  background-color: transparent;
   font-size: 10px;
 }
 

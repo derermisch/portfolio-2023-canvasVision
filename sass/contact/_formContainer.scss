@@ -16,7 +16,7 @@
         padding: 1rem;
         border: 2px solid var(--foreground);
         border-radius: 8px;
-        background-color: var(--background);
+        background-color: transparent;
         font-size: $Fs-p;
         font-family: 'Lekton', sans-serif;
         color: var(--foreground);
@@ -45,7 +45,7 @@
     row-gap: .5rem;
 
     &--text {
-        background-color: var(--background);
+        background-color: transparent;
         font-size: $Fs-p-small;
     }
 }

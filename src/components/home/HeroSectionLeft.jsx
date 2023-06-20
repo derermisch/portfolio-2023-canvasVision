@@ -8,7 +8,9 @@ export default function HeroSectionLeft({ heroLeft, lan }) {
                 {/* <h1 className="home--heroSection--left--textContainer--heading">{document.body.clientWidth}</h1> */}
                 <p className="home--heroSection--left--textContainer--subHeading">{heroLeft.subheadingLeft[lan]}</p>
             </div>
-            <button className="home--heroSection--left--callToAction">{heroLeft.callToActionBtnLeft[lan]}</button>
+            <button onClick={() => document.querySelector(".services").scrollIntoView({ behavior: "smooth" })} className="home--heroSection--left--callToAction">
+                {heroLeft.callToActionBtnLeft[lan]}
+            </button>
         </div>
         : <ClipLoader />
 }
