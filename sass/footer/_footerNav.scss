@@ -1,0 +1,27 @@
+.footer--navigation--linkWrapper--links {
+    @include flexIt($dir: column, $alignIt: flex-start);
+
+    &--link,
+    &--backHomeLink {
+        background-color: var(--foreground);
+        color: var(--background);
+        text-decoration: none;
+        padding-inline: unset;
+        padding-block: .2rem;
+        text-decoration-color: var(--clr-action) !important;
+        text-decoration-thickness: 2px !important;
+    }
+
+    &--backHomeLink {
+        text-decoration: underline;
+    }
+}
+
+.footer--navigation--linkWrapper--links--link,
+.footer--navigation--linkWrapper--links--backHomeLink {
+    &--text {
+        background-color: var(--foreground);
+        color: var(--background);
+        font-size: $Fs-link;
+    }
+}

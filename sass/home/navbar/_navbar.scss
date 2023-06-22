@@ -8,7 +8,7 @@
         font-size: $Fs-link;
         list-style: none;
         @include flexIt();
-        gap: 1.5rem;
+        gap: .5rem;
     }
 
     &--hamburger {
@@ -23,7 +23,7 @@
         border-radius: $Button-Border-Radius;
         padding-inline: .5rem;
     }
-
+    
     &--link {
         background-color: transparent;
         @include flexIt($dir: row);
@@ -31,8 +31,10 @@
         font-weight: 500;
         cursor: pointer;
         transition: transform 150ms ease-in-out;
+        text-decoration-color: var(--clr-action) !important;
+        text-decoration-thickness: 2px !important;
     }
-
+    
     &--link>* {
         font-size: $Fs-link;
         color: var(--background);

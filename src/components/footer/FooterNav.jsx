@@ -1,46 +1,15 @@
 import { MakeImgButton } from "../general/MakeImgButton"
 import { scrollToLocation } from "../../utils/utils"
 import { Link } from "react-router-dom"
+import Navlinks from "../navbar/Navlinks"
 
-export default function FooterNav({ navLinks, showHomeNavigation = true, lan }) {
-    const generateImgButtons = () => {
-        const imgButtons = []
-        for (let i = 0; i < navLinks.length; i++) {
-            if (navLinks[i].link) {
-                imgButtons.push(
-                    <MakeImgButton key={i}>
-                        <a
-                            className="footer--navigation--link"
-                            href={navLinks[i].link}
-                        >
-                            {navLinks[i].navLink}
-                        </a>
-                    </MakeImgButton>
-                )
-            } else {
-                imgButtons.push(
-                    <MakeImgButton key={i}>
-                        <a
-                            className="footer--navigation--link"
-                            onClick={() => {
-                                scrollToLocation(navLinks[i].index)
-                            }}
-                        >
-                            {navLinks[i].navLink}
-                        </a>
-                    </MakeImgButton>
-                )
-            }
-        }
-        return imgButtons
-    }
-
+export default function FooterNav({ navlinkData, showHomeNavigation = true, lan }) {
     return <>
         {
-            showHomeNavigation ?
+            navlinkData ?
                 <div className="footer--navigation">
-                    < h2 className="footer--navigation--heading" > Navigation</h2 >
-                    {generateImgButtons()}
+                    < h2 className="footer--navigation--heading" >Navigation</h2 >
+                    <Navlinks navlinkData={navlinkData} showHamburgerContainer={false} providedClassName="footer--navigation--linkWrapper" lan={lan} />
                 </div >
                 : <Link to={"/"}>{lan === 0 ? "Zurück zur Startseite" : "Back to home"}</Link>
         }

@@ -29,7 +29,9 @@
             outline: none;
             border-style: dotted;
             border-color: var(--clr-action);
-            caret-color: var(--foreground);
+            caret-color: var(--clr-action);
+            background-color: var(--foreground);
+            color: var(--background);
         }
     }
 

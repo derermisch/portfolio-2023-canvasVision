@@ -16,11 +16,21 @@ export default defineType({
             title: 'Link',
             type: 'string'
         }),
+        defineField({
+            name: 'route',
+            title: 'Route',
+            type: 'string'
+        }),
+        defineField({
+            name: 'scrollToClassName',
+            title: 'Scroll To Klassen Name',
+            type: 'string'
+        }),
     ],
 
     preview: {
-        prepare(){
-            return {title: "(Doppelklick)"}
+        prepare() {
+            return { title: "(Doppelklick)" }
         }
     },
 })

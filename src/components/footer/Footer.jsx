@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import ClipLoader from "react-spinners/ClipLoader"
 
-import { scrollToLocation, prepareNavLinkArray } from "../../utils/utils"
 import ScrollUpButton from "./ScrollUpButton"
-import { MakeImgButton } from "../general/MakeImgButton"
 import FooterNav from "./FooterNav"
 import FooterLegal from "./FooterLegal"
+import { DataSource, getServerData } from "../general/DataSource"
 
-export default function Footer({ navlinkData, lan }) {
+export default function Footer({ lan }) {
     const location = useLocation().pathname
     const [showHomeNavigation, setShowHomeNavigation] = useState(() => false)
-
-    const [navLinks, setNavLinks] = useState(() => null)
 
     useEffect(() => {
         if (location !== "/") {
@@ -22,29 +19,23 @@ export default function Footer({ navlinkData, lan }) {
         }
     }, [location])
 
-    // TODO: Refactor this useEffect and generateImgButtons functions
-    // (used here and in Navlinks.jsx..)
-    useEffect(() => {
-        if (!navlinkData && !lan) return
-
-        setNavLinks(prepareNavLinkArray(navlinkData, lan))
-    }, [navlinkData, lan])
-
     return (
-        navLinks ?
-            <>
-                {/* <ScrollUpButton /> */}
-                <section className="footer">
+        <>
+            {/* <ScrollUpButton /> */}
+            <section className="footer">
+                <DataSource
+                    getDataFunc={getServerData('*[_type == "nav"].navlink[]{navlink, route, link, scrollToClassName}')}
+                    resourceName="navlinkData"
+                >
                     <FooterNav
-                        navLinks={navLinks}
                         lan={lan}
                         showHomeNavigation={showHomeNavigation}
                     />
-                    <FooterLegal
-                        lan={lan}
-                    />
-                </section>
-            </>
-            : <ClipLoader />
+                </DataSource>
+                <FooterLegal
+                    lan={lan}
+                />
+            </section>
+        </>
     )
 }

@@ -2,10 +2,11 @@ import { DataSource, getServerData } from "../general/DataSource"
 import ServiceItemContainer from "./ServiceItemContainer"
 import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import { SettingsContext } from "../general/SettingsContext"
-import BackgroundCanvas from "../general/BackgroundCanvas"
+// import BackgroundCanvas from "../general/BackgroundCanvas"
 import Spacer from "../general/Spacer"
 import { useInView } from "react-intersection-observer"
 import CustomButton from "./CustomButton"
+// import { drawDebugRect } from "../../utils/debug"
 
 const serviceItemVisibleEvent = new CustomEvent("serviceItemVisible", {
     detail: {
@@ -18,15 +19,23 @@ export default function Services() {
     const value = useContext(SettingsContext).value
     const lineRef = useRef(null)
     const headingRef = useRef(null)
+    const pageRef = useRef(null)
     const [gridHeight, setGridHeight] = useState(() => 0)
     const { ref: inViewRef, inView } = useInView({
         threshold: .1
     })
-
     const setRefs = useCallback((node) => {
         lineRef.current = node
         inViewRef(node)
     }, [inViewRef])
+
+    const { ref: pageInViewRef, inView: pageInView } = useInView({})
+
+    const setPageRef = useCallback((node) => {
+        pageRef.current = node
+        pageInViewRef(node)
+    }, [pageInViewRef])
+
 
     function convertRemToPixels(rem) {
         return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -107,18 +116,19 @@ export default function Services() {
         if (gridHeight === 0) return
         if (!lineRef.current || !headingRef.current) return
 
-        /** @type{HTMLElement} */
-        const headingEle = headingRef.current
-        /** @type{HTMLElement} */
-        const svgEle = lineRef.current
-        const lineMain = svgEle.childNodes[0]
-        const lineLoading = svgEle.childNodes[1]
-
         const resizeSvgLine = () => {
+            // references
+            /** @type{HTMLElement} */
+            const headingEle = headingRef.current
+            /** @type{HTMLElement} */
+            const svgEle = lineRef.current
+            const lineMain = svgEle.childNodes[0]
+            const lineLoading = svgEle.childNodes[1]
+
             // configure svg
             svgEle.setAttribute("viewBox", `0 0 ${document.body.clientWidth} ${gridHeight}`);
             // drawDebugRect(headingEle.getBoundingClientRect().top + Number(scrollY))
-            svgEle.style.top = headingEle.getBoundingClientRect().bottom + Number(scrollY) + "px"
+            svgEle.style.top = headingEle.getBoundingClientRect().bottom + Number(scrollY)
 
             // configure lines to have length of grid (+ margin)
             lineMain.setAttribute("x1", document.body.clientWidth / 2)
@@ -142,7 +152,7 @@ export default function Services() {
             window.removeEventListener("resize", onResizeEvent)
         }
 
-    }, [lineRef, gridHeight, headingRef])
+    }, [lineRef, gridHeight, headingRef, pageInView])
 
     const signalReady = (containerHeight) => {
         // +12 rem, because of margin-block: 6rem in Css
@@ -150,7 +160,7 @@ export default function Services() {
     }
 
     return (<>
-        <section className="services site">
+        <section className="services site" ref={setPageRef}>
             <h1 className="services--heading" ref={headingRef}>Services</h1>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" ref={setRefs} className="services--line">
                 <line className="services--line--main" x1="50" y1="0" x2="50" y2="100" stroke="black" />

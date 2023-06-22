@@ -28,7 +28,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import React from 'react';
 
-export const MakeImgButton = ({ children, linkedState, imgSrc, icon }) => {
+export const MakeImgButton = ({ children, linkedState, imgSrc, icon, route = null }) => {
     if (!children) {
         return <p>No children provided!</p>
     }
@@ -64,7 +64,7 @@ export const MakeImgButton = ({ children, linkedState, imgSrc, icon }) => {
     if (React.isValidElement(child)) {
         return React.cloneElement(
             child,
-            { linkedstate: linkedState },
+            { linkedstate: linkedState, route: route },
             [...newChildren]
         )
     }

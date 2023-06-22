@@ -12,7 +12,8 @@ export default function MakeAutomaticNavbar({
         </rect>
     </svg>,
     className,
-    backHomeText = "Back to home"
+    backHomeText = "Back to home",
+    showHamburgerContainer = true
 }) {
     if (!children) {
         return <p>No children provided!</p>
@@ -21,21 +22,40 @@ export default function MakeAutomaticNavbar({
         return <p>No icon provided!</p>
     }
     const location = useLocation().pathname
-    const [showHomeNavigation, setShowHomeNavigation] = useState(() => false)
+    // const [showHomeNavigation, setShowHomeNavigation] = useState(() => false)
 
-    useEffect(() => {
-        if (location !== "/") {
-            setShowHomeNavigation(false)
-        } else {
-            setShowHomeNavigation(true)
-        }
-    }, [location])
+    // useEffect(() => {
+    //     if (location !== "/") {
+    //         setShowHomeNavigation(false)
+    //     } else {
+    //         setShowHomeNavigation(true)
+    //     }
+    // }, [location])
 
     const iconContainerRef = useRef(null)
     const linkContainerRef = useRef(null)
 
-
+    // underline for routes which match location
     useLayoutEffect(() => {
+        if (!linkContainerRef.current || !children || !location) return
+
+        /** @type{HTMLElement} */
+        const linkContainerEle = linkContainerRef.current
+
+        for (let i = 0; i < children.length; i++) {
+            const child = linkContainerEle.firstChild.childNodes[i]
+            if (!child) continue
+            if (children[i].props.route === location) {
+                child.style.textDecoration = "underline"
+            } else {
+                child.style.textDecoration = "none"
+            }
+        }
+    }, [linkContainerRef, children, location])
+
+    // hamburger
+    useLayoutEffect(() => {
+        if (!iconContainerRef.current) return
         /** @type{HTMLElement} */
         const iconContainerEle = iconContainerRef.current
 
@@ -70,7 +90,7 @@ export default function MakeAutomaticNavbar({
 
     return (
         <>
-            <button
+            {showHamburgerContainer && <button
                 className="hamburgerContainer"
                 ref={iconContainerRef}
                 onClick={() => {
@@ -79,18 +99,23 @@ export default function MakeAutomaticNavbar({
                 }}
             >
                 {icon}
-            </button>
+            </button>}
 
             <div className={className} ref={linkContainerRef}>
                 <div className={className + "--links"}>
+                    {
+                        children
+                    }
+                </div>
+                {/* <div className={className + "--links"}>
                     {
                         showHomeNavigation
                             ?
                             children
                             :
-                            <Link to={"/"}>{backHomeText}</Link>
+                            <Link to={"/"} className={className + "--links--backHomeLink"}>{backHomeText}</Link>
                     }
-                </div>
+                </div> */}
             </div>
         </>
     )

@@ -1,27 +1,21 @@
 import { defineType, defineField } from "sanity"
 
 export default defineType({
-    name: 'aboutmesite',
-    title: '[2]About Me',
+    name: 'aboutMe',
+    title: '[0]About Me',
     type: 'document',
     fields: [
         defineField({
-            name: 'heading',
-            title: 'Überschrift',
+            name: 'aboutMeEntries',
+            title: 'About Me Einträge',
             type: 'array',
-            of: [{ type: "string" }],
-        }),
-        defineField({
-            name: 'aboutMeArray',
-            title: 'AboutMe Einträge',
-            type: 'array',
-            of: [{ type: 'aboutMeData' }],
+            of: [{ type: "aboutMeEntry" }],
         }),
     ],
 
     preview: {
         prepare() {
-            return { title: "AboutMe" }
+            return { title: "Startseite" }
         }
     },
 })

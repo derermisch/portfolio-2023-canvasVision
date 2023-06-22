@@ -1,0 +1,17 @@
+.footer--rechtliches {
+    &--linkContainer {
+        @include flexIt($dir: column, $alignIt: flex-start);
+    }
+}
+
+.footer--rechtliches--linkContainer {
+    >a {
+        cursor: pointer;
+        color: var(--background);
+        background-color: var(--foreground);
+        padding-inline: unset;
+        padding-block: .2rem;
+        // text-decoration: none;
+        font-size: $Fs-link;
+    }
+}

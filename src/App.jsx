@@ -12,6 +12,7 @@ import { SettingsContext } from "./components/general/SettingsContext"
 import { getCurrentLanguage } from "./utils/language"
 import { setCurrentLightMode } from "./utils/darkmode"
 import Footer from "./components/footer/Footer"
+import AboutMe from "./components/aboutMe/aboutMe"
 
 export default function App() {
     //0 is german, 1 is english. This way it can be used as an index directly
@@ -29,6 +30,8 @@ export default function App() {
             <SettingsContext.Provider value={providerValue}>
                 <Routes>
                     <Route path="/" element={<Sites />} />
+
+                    <Route path="/aboutMe" element={<AboutMe />} />
 
                     <Route path="/datenschutz" element=
                         {
@@ -54,13 +57,7 @@ export default function App() {
                         }
                     />
                 </Routes>
-
-                <DataSource
-                    getDataFunc={getServerData('*[_type == "nav"].navlink[]{ navlink,link}')}
-                    resourceName="navlinkData"
-                >
-                    <Footer lan={value} />
-                </DataSource>
+                <Footer lan={value} />
             </SettingsContext.Provider>
 
             {/* <Footer /> */}

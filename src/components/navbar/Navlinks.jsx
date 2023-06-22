@@ -1,50 +1,62 @@
 import ClipLoader from "react-spinners/ClipLoader"
-import { useState } from "react"
-import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
-import { scrollToLocation, prepareNavLinkArray, throttle } from "../../utils/utils"
 import { MakeImgButton } from "../general/MakeImgButton"
 import MakeAutomaticNavbar from "../general/MakeAutomaticNavbar"
 
-export default function Navlinks({ navlinkData, lan }) {
-    const [navLinks, setNavLinks] = useState(() => null)
-
-    // Prepare navLinks object with naclinkData: get indexing right
-    // If there is a href link, then indexing is skipped
-    useEffect(() => {
-        if (!navlinkData && !lan) return
-
-        setNavLinks(prepareNavLinkArray(navlinkData, lan))
-    }, [navlinkData, lan])
-
-
+export default function Navlinks({ navlinkData, lan, showHamburgerContainer = true, providedClassName = "nav--linkWrapper" }) {
     const toggleNavMenu = () => { //hacky solution
-        document.querySelector(".hamburgerContainer").children[0].classList.toggle("openHamburger")
-        document.querySelector(".nav--linkWrapper").classList.toggle("openNav")
+        const hamburger = document.querySelector(".hamburgerContainer").children[0]
+        const navLinkWrapper = document.querySelector(".nav--linkWrapper")
+        if (hamburger.classList.contains("openHamburger")) {
+            hamburger.classList.remove("openHamburger")
+        }
+        if (navLinkWrapper.classList.contains("openNav")) {
+            navLinkWrapper.classList.remove("openNav")
+        }
+        if (document.body.classList.contains("navOpen")) {
+            document.body.classList.remove("navOpen")
+        }
     }
 
     const generateImgButtons = () => {
         const imgButtons = []
-        for (let i = 0; i < navLinks.length; i++) {
-            if (navLinks[i].link) {
+        for (let i = 0; i < navlinkData.length; i++) {
+            if (navlinkData[i].link) { // Link to external site
                 imgButtons.push(
                     <MakeImgButton key={i}>
                         <a
-                            className="nav--linkWrapper--links--link"
-                            href={navLinks[i].link}
+                            className={`${providedClassName}--links--link`}
+                            href={navlinkData[i].link}
                         >
-                            {navLinks[i].navLink}
+                            {navlinkData[i].navlink[lan]}
                         </a>
                     </MakeImgButton>
                 )
-            } else {
+            }
+            else if (navlinkData[i].route) { // Link to route
+                imgButtons.push(
+                    <MakeImgButton key={i} route={navlinkData[i].route}>
+                        <Link to={`${navlinkData[i].route}`} className={`${providedClassName}--links--link`}>
+                            {navlinkData[i].navlink[lan]}
+                        </Link>
+                    </MakeImgButton>
+                )
+            }
+            else if (navlinkData[i].scrollToClassName) { // Scroll to location
                 imgButtons.push(
                     <MakeImgButton key={i}>
                         <a
-                            className="nav--linkWrapper--links--link"
-                            onClick={() => scrollToLocation(navLinks[i].index, toggleNavMenu)}
+                            className={`${providedClassName}--links--link`}
+                            onClick={() => {
+                                if (location.pathname !== "/") { // scrolling is for homepage only
+                                    window.location.href = "/"
+                                }
+                                document.querySelector(`.${navlinkData[i].scrollToClassName}`).scrollIntoView({ behavior: "smooth" }) // scroll
+                                toggleNavMenu() // disable all navmenu associated classes
+                            }}
                         >
-                            {navLinks[i].navLink}
+                            {navlinkData[i].navlink[lan]}
                         </a>
                     </MakeImgButton>
                 )
@@ -55,8 +67,12 @@ export default function Navlinks({ navlinkData, lan }) {
 
     // make navbar, the links are mapped from the received data
     return (
-        navLinks ?
-            <MakeAutomaticNavbar className="nav--linkWrapper" backHomeText={lan === 0 ? "Zurück zur Startseite" : "Back to home"}>
+        navlinkData ?
+            <MakeAutomaticNavbar
+                className={providedClassName}
+                backHomeText={lan === 0 ? "Zurück zur Startseite" : "Back to home"}
+                showHamburgerContainer={showHamburgerContainer}
+            >
                 {generateImgButtons()}
             </MakeAutomaticNavbar>
             : <ClipLoader />

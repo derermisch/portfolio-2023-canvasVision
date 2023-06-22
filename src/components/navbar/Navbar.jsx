@@ -12,7 +12,7 @@ export default function () {
         <nav className="nav">
             <SettingsToggle renderDarkModeToggle={false} />
             <DataSource
-                getDataFunc={getServerData('*[_type == "nav"].navlink[]{ navlink,link}')}
+                getDataFunc={getServerData('*[_type == "nav"].navlink[]{navlink, route, link, scrollToClassName}')}
                 resourceName="navlinkData"
             >
                 <Navlinks lan={value} />

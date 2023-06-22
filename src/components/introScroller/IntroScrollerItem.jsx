@@ -4,6 +4,7 @@ import Typewriter from 'typewriter-effect';
 import { ClipLoader } from "react-spinners"
 import { useRef } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function IntroScrollerItem({ lan, introButtons = false, introScrollData }) {
     const { ref: textRef, inView, entry } = useInView({
@@ -78,16 +79,24 @@ export default function IntroScrollerItem({ lan, introButtons = false, introScro
                 </h1>
                 {introButtons &&
                     <div className="introScroller--item--buttons">
-                        <a className="introScroller--item--buttons--aboutMe">
+                        <Link
+                            to="/aboutMe"
+                            className="introScroller--item--buttons--aboutMe"
+                            style={{ textDecoration: "none" }}
+                        >
                             {introScrollData.buttonTop[lan]}
                             <p className="introScroller--item--buttons--aboutMe--textBackground" />
                             <div className="introScroller--item--buttons--aboutMe--effect" />
-                        </a>
-                        <a className="introScroller--item--buttons--myProjects">
+                        </Link>
+                        <Link
+                            to="/projects"
+                            className="introScroller--item--buttons--myProjects"
+                            style={{ textDecoration: "none" }}
+                        >
                             {introScrollData.buttonBottom[lan]}
                             <p className="introScroller--item--buttons--aboutMe--textBackground" />
                             <div className="introScroller--item--buttons--aboutMe--effect" />
-                        </a>
+                        </Link>
                     </div>
                 }
             </div >

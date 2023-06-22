@@ -1,4 +1,3 @@
-import { useState } from "react"
 import ServiceItem from "./ServiceItem"
 import ClipLoader from "react-spinners/ClipLoader"
 import { useRef } from "react"
@@ -66,10 +65,12 @@ export default function ServiceItemContainer({ serviceData, lan, signalFunc = ()
         }
 
         window.addEventListener("resize", onResizeEvent)
+        // window.addEventListener("popstate", onResizeEvent)
         window.addEventListener("serviceItemVisible", onServiceItemVisibleEvent)
 
         return () => {
             window.removeEventListener("resize", onResizeEvent)
+            // window.removeEventListener("popstate", onResizeEvent)
             window.removeEventListener("serviceItemVisible", onServiceItemVisibleEvent)
         }
     }, [containerRef, serviceData])
