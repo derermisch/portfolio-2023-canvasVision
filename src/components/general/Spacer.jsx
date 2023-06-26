@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners"
 import { getCurrentLightMode } from "../../utils/darkmode"
 import useResizeObserver from "use-resize-observer";
 // svg-code from https://app.haikei.app/. Dimensions: 1000 x 100
-export default function ReactSpacer({ spacerRes, targetElementClassName = null }) {
+export default function Spacer({ spacerRes, targetElementClassName = null }) {
     const containerRef = useRef(null)
 
     useEffect(() => {

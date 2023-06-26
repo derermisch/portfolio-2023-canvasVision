@@ -7,30 +7,7 @@
 
     &--scrollSvg {
         // stroke: var(--foreground);
-        fill: var(--foreground);
-        z-index: 10;
         transform: translate(0, -60%);
-    }
-}
-
-.home--scrollSvg {
-    >*{
-        fill: var(--foreground);
-    }
-
-    &--arrow {
-        stroke: var(--clr-action);
-        fill: var(--clr-action);
-        animation: callToAction 1s ease-in-out infinite alternate;
-    }
-
-    @keyframes callToAction {
-        0% {
-            transform: translate(0, 0)
-        }
-        100% {
-            transform: translate(0, -5%)
-        }
     }
 }
 
@@ -45,6 +22,7 @@
 @include for-tablet {
     .home {
         align-items: center;
+
         &--scrollSvg {
             transform: translate(0, -20%);
         }

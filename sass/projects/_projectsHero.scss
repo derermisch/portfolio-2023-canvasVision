@@ -1,0 +1,38 @@
+.projects--heroSection {
+    &--textContainer {
+        flex: 1;
+        @include flexIt($dir: column);
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+.projects--heroSection--textContainer {
+    &--heading {
+        font-size: $Fs-h1;
+        font-weight: bold;
+    }
+
+    &--subHeading {
+        width: 40%;
+        font-size: $Fs-h3;
+    }
+}
+
+@include for-fullHD-andBigger {
+    .projects--heroSection--textContainer {
+        &--subHeading {
+            width: 30%;
+            font-size: $Fs-h3;
+        }
+    }
+}
+
+@include for-phone {
+    .projects--heroSection--textContainer {
+        &--subHeading {
+            width: unset;
+            font-size: $Fs-h3;
+        }
+    }
+}

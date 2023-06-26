@@ -1,0 +1,22 @@
+.projects--projectItemContainer {
+    >* {
+        width: 100%;
+        display: grid;
+        grid-template-columns: .6fr .4fr;
+        grid-template-rows: repeat(2, 1fr);
+        place-items: center;
+    }
+}
+
+@include for-phone {
+    .projects--projectItemContainer {
+        >* {
+            min-height: unset;
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content min-content;
+            row-gap: 1rem;
+        }
+    }
+}
+
+@import "./projectItem";

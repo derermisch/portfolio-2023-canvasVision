@@ -1,8 +1,8 @@
 import blockContent from './blockContent'
 import blockContentWrapper from './blockContentWrapper'
 import home from "./home"
-import projectsite from "./projectsite"
-import projectData from "./projectData"
+import projects from './projects'
+import projectItem from './projectItem'
 import contact from './contact'
 import datenschutz from './datenschutz'
 import impressum from './impressum'
@@ -23,8 +23,8 @@ export const schemaTypes = [
     introScroller,
     services,
     serviceItem,
-    projectsite,
-    projectData,
+    projects,
+    projectItem,
     contact,
     datenschutz,
     impressum,

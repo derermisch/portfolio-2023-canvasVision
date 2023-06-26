@@ -1,0 +1,24 @@
+.scrollSvg {
+    fill: var(--foreground);
+    z-index: 10;
+
+    >* {
+        fill: var(--foreground);
+    }
+
+    &--arrow {
+        stroke: var(--clr-action);
+        fill: var(--clr-action);
+        animation: callToAction 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes callToAction {
+        0% {
+            transform: translate(0, 0)
+        }
+
+        100% {
+            transform: translate(0, -5%)
+        }
+    }
+}

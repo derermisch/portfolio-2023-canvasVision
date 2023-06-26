@@ -1,5 +1,5 @@
 import ClipLoader from "react-spinners/ClipLoader"
-import { Link } from "react-router-dom"
+import { HashLink as Link } from 'react-router-hash-link';
 
 import { MakeImgButton } from "../general/MakeImgButton"
 import MakeAutomaticNavbar from "../general/MakeAutomaticNavbar"
@@ -37,7 +37,7 @@ export default function Navlinks({ navlinkData, lan, showHamburgerContainer = tr
             else if (navlinkData[i].route) { // Link to route
                 imgButtons.push(
                     <MakeImgButton key={i} route={navlinkData[i].route}>
-                        <Link to={`${navlinkData[i].route}`} className={`${providedClassName}--links--link`}>
+                        <Link to={`${navlinkData[i].route}`} className={`${providedClassName}--links--link`} onClick={() => toggleNavMenu()}>
                             {navlinkData[i].navlink[lan]}
                         </Link>
                     </MakeImgButton>
@@ -46,7 +46,7 @@ export default function Navlinks({ navlinkData, lan, showHamburgerContainer = tr
             else if (navlinkData[i].scrollToClassName) { // Scroll to location
                 imgButtons.push(
                     <MakeImgButton key={i}>
-                        <a
+                        <button
                             className={`${providedClassName}--links--link`}
                             onClick={() => {
                                 if (location.pathname !== "/") { // scrolling is for homepage only
@@ -57,7 +57,7 @@ export default function Navlinks({ navlinkData, lan, showHamburgerContainer = tr
                             }}
                         >
                             {navlinkData[i].navlink[lan]}
-                        </a>
+                        </button>
                     </MakeImgButton>
                 )
             }

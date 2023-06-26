@@ -6,7 +6,7 @@ import Spacer from "../general/Spacer"
 
 export default function Contact() {
     return (<>
-        <section className="contact site">
+        <section className="contact site" id="contact">
             {/* <BackgroundCanvas pageMult={4} /> */}
             <DataSource
                 getDataFunc={getServerData('*[_type == "contact"][0].heading')}

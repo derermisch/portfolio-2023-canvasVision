@@ -13,6 +13,7 @@ import { getCurrentLanguage } from "./utils/language"
 import { setCurrentLightMode } from "./utils/darkmode"
 import Footer from "./components/footer/Footer"
 import AboutMe from "./components/aboutMe/aboutMe"
+import Projects from "./components/projects/Projects"
 
 export default function App() {
     //0 is german, 1 is english. This way it can be used as an index directly
@@ -32,6 +33,8 @@ export default function App() {
                     <Route path="/" element={<Sites />} />
 
                     <Route path="/aboutMe" element={<AboutMe />} />
+
+                    <Route path="/projects" element={<Projects />} />
 
                     <Route path="/datenschutz" element=
                         {

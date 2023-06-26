@@ -2,8 +2,10 @@
 $Svg-Size: 32px;
 
 // Sites
-$Sites-PaddingBlock: 1.5rem;
+// $Sites-PaddingBlock: 1.5rem;
+$Sites-PaddingBlock: 3vh;
 $Sites-PaddingInline: 3rem;
+// $Sites-PaddingInline: 2vw;
 $Sites-PaddingBlock-Big: calc($Sites-PaddingBlock * 4);
 $Sites-PaddingInline-Big: calc($Sites-PaddingBlock * 2);
 $Sites-PaddingBlock-Mobile: 40px;

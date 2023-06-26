@@ -1,36 +1,26 @@
-import { useInView } from "react-intersection-observer"
+import { useContext } from "react";
 
-import ProjectContainer from "./ProjectContainer"
-import { DataSource, getServerData } from "../general/DataSource"
-import Heading from "../general/Heading"
-import Spacer from "../general/Spacer"
-import BackgroundCanvas from "../general/BackgroundCanvas"
+import ProjectHero from "./ProjectHero";
+import ProjectItemContainer from "./ProjectItemContainer";
+import { DataSource, getServerData } from "../general/DataSource";
+import { SettingsContext } from "../general/SettingsContext";
 
 export default function Projects() {
-    const { ref, inView, entry } = useInView({
-        threshold: 0.1
-    })
+    const value = useContext(SettingsContext).value
 
-    return (
-        <section className="projects" ref={ref}>
-            <DataSource
-                getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
-                resourceName="spacerRes">
-                <Spacer pageMult={2} />
-            </DataSource>
-            <BackgroundCanvas pageMult={2}/>
-            {/* <DataSource
-                getDataFunc={getServerData('*[_type == "projectsite"][0].heading')}
-                resourceName="headingArr"
-            >
-                <Heading className="projects--heading" />
-            </DataSource>
+    return <main className="projects site">
+        <DataSource
+            getDataFunc={getServerData('*[_type == "projects"][0]{projectsHeading, projectsSubheading}')}
+            resourceName={"projectsHeroData"}
+        >
+            <ProjectHero lan={value} />
+        </DataSource>
+        <DataSource
+            getDataFunc={getServerData('*[_type == "projects"][0]{"projectData": projectItems[]{projectHeading, "desktopImgUrl": desktopImage.asset->url,"mobileImgUrl": mobileImage.asset->url, callToActionText, projectDescription, backgroundColor, callToActionColor, callToActionLink}}')}
+            resourceName={"projectData"}
+        >
+            <ProjectItemContainer lan={value} />
+        </DataSource>
+    </main>
 
-            <DataSource
-                getDataFunc={getServerData('*[_type == "projectsite"][0].projectsArray[]{"imgUrl": projectImg.asset->url, projectLiveLink, projectGithubLink, projektHeading}')} resourceName="projects"
-            >
-                <ProjectContainer projectsInView={inView} />
-            </DataSource> */}
-        </section>
-    )
 }
