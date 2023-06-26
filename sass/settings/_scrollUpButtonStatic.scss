@@ -1,0 +1,38 @@
+.scrollUpButtonStatic {
+    position: absolute;
+    right: $Sites-PaddingInline;
+    background-color: var(--background) !important;
+    width: 64px;
+    height: 64px;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.scrollUpButtonStatic {
+    &--svg {
+        width: 32px;
+        height: 32px;
+        transform: rotate(180deg);
+        stroke: var(--foreground);
+
+        >path {
+            fill: var(--foreground);
+        }
+    }
+}
+
+@include for-phone {
+    .scrollUpButtonStatic {
+        position: relative;
+        right: unset;
+        width: 32px;
+        height: 32px;
+        padding: 8px;
+
+        &--svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

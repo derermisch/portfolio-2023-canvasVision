@@ -265,6 +265,7 @@ export default function HeroSectionRight({ heroRight, lan }) {
             {/* <img className="home--heroSection--right--img" src={builder.image(heroRight.imgUrl).width(800).height(800)} alt="myself" /> */}
         </div>
     ) : (
-        <ClipLoader />
+        <ClipLoader 
+ className="clipLoader"/>
     )
 }

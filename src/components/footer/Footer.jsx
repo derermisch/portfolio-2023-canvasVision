@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom"
 import ClipLoader from "react-spinners/ClipLoader"
 
 import ScrollUpButton from "./ScrollUpButton"
+import ScrollUpButtonStatic from "../general/ScrollUpButtonStatic"
 import FooterNav from "./FooterNav"
 import FooterLegal from "./FooterLegal"
 import { DataSource, getServerData } from "../general/DataSource"
@@ -23,6 +24,7 @@ export default function Footer({ lan }) {
         <>
             {/* <ScrollUpButton /> */}
             <section className="footer">
+                <ScrollUpButtonStatic />
                 <DataSource
                     getDataFunc={getServerData('*[_type == "nav"].navlink[]{navlink, route, link, scrollToClassName}')}
                     resourceName="navlinkData"

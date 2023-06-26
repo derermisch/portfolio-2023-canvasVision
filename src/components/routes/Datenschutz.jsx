@@ -11,7 +11,7 @@ export default function Datenschutz({ text, lan }) {
                 <Navbar />
                 <h2 className="datenschutz--heading">{lan === 0 ? "Datenschutz" : "Data protection"}</h2>
                 {lan > 0 && <p className="datenschutz--lanDisclaimer">(There is only a german version of this text available)</p>}
-                <article className="datenschutz--textContainer">
+                <article className="datenschutz--textContainer portableTextContainer">
                     <PortableText
                         // value={lan === 0 ? text.text_de : text.text_en}
                         value={text.text_de}
@@ -20,6 +20,7 @@ export default function Datenschutz({ text, lan }) {
                     />
                 </article>
             </section>
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

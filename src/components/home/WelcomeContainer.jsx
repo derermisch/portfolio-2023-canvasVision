@@ -23,6 +23,7 @@ export default function WelcomeContainer({ welcomeData, lan }) {
                     </a>
                 </div>
             </div>
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

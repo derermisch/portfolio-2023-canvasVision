@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners"
 import { getCurrentLightMode } from "../../utils/darkmode"
 import useResizeObserver from "use-resize-observer";
 // svg-code from https://app.haikei.app/. Dimensions: 1000 x 100
-export default function Spacer({ spacerRes, targetElementClassName = null }) {
+export default function Spacer({ spacerRes, targetElementClassName = null, showLower = true }) {
     const containerRef = useRef(null)
 
     useEffect(() => {
@@ -45,7 +45,13 @@ export default function Spacer({ spacerRes, targetElementClassName = null }) {
                 child.style.width = document.body.clientWidth + "px"
             })
             lowerSpacer.style.rotate = "180deg"
-            container.style.top = myTargetRect.height + myTargetRect.top + Number(scrollY) - container.getBoundingClientRect().height / 2 + "px"
+            if (!showLower) {
+                lowerSpacer.style.display = "none"
+                container.style.top = myTargetRect.height + myTargetRect.top + Number(scrollY) + "px"
+            }
+            else {
+                container.style.top = myTargetRect.height + myTargetRect.top + Number(scrollY) - container.getBoundingClientRect().height / 2 + "px"
+            }
         }
         setup()
 
@@ -72,5 +78,6 @@ export default function Spacer({ spacerRes, targetElementClassName = null }) {
             <div className="spacer--upper"></div>
             <div className="spacer--lower"></div>
         </div>
-        : <ClipLoader />
+        : <ClipLoader 
+ className="clipLoader"/>
 }

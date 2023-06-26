@@ -87,5 +87,6 @@ export default function ServiceItemContainer({ serviceData, lan, signalFunc = ()
                 />
             })}
         </div>
-        : <ClipLoader />
+        : <ClipLoader 
+ className="clipLoader"/>
 }

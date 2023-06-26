@@ -21,6 +21,7 @@ export default function FormHandle({ requestInfo, lan }) {
                 }
                 <Link className="formHandle--backLink" to={"/"}>Zurück zur Startseite</Link>
             </section>
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

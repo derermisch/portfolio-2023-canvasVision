@@ -1,0 +1,11 @@
+.portableTextContainer {
+    >* {
+        font-size: $Fs-p;
+        
+        >* {
+            font-size: $Fs-p;
+            padding: unset !important;
+            background-color: unset !important;
+        }
+    }
+}

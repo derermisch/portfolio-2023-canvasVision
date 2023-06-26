@@ -20,7 +20,8 @@ export default function ProjectItemContainer({ projectData, lan }) {
                     callToActionLink={projectItem.callToActionLink}
                 />
             })}
-        </section> : <ClipLoader />}
+        </section> : <ClipLoader 
+ className="clipLoader"/>}
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">

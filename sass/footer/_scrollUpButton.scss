@@ -1,13 +1,14 @@
-.anfahrt--scrollUpBtn {
+.scrollUpBtn {
     opacity: 1;
     border: none;
+    // position: sticky;
     position: sticky;
-    // position: absolute;
     z-index: 5;
-    bottom: $Sites-PaddingBlock;
+    // bottom: $Sites-PaddingBlock;
+    bottom: 10%;
     background-color: var(--background);
     // transform: translateX(calc(50vw - 64px / 2)) translateY(32px);
-    transform: translateX(calc(100vw - 64px - 6rem)) translateY(32px);
+    transform: translateX(calc(100vw - 64px - 6rem)) translateY(64px);
     width: 64px;
     height: 64px;
     padding: 1rem;
@@ -15,7 +16,7 @@
     cursor: pointer;
 }
 
-.anfahrt--scrollUpBtn {
+.scrollUpBtn {
     &--svg {
         width: 32px;
         height: 32px;
@@ -28,7 +29,7 @@
 }
 
 @include for-phone {
-    .anfahrt--scrollUpBtn {
+    .scrollUpBtn {
         position: static;
         transform: translateX(calc(50vw - 64px / 2)) translateY(32px);
     }

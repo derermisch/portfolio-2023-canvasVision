@@ -19,7 +19,7 @@ export default function ScrollUpButton() {
                 const footer = document.querySelector(".footer")
                 if (!footer) return
 
-                scrollBtn.style.position = "sticky"
+                // scrollBtn.style.position = "sticky"
                 const distance = footer.getBoundingClientRect().top - scrollBtn.getBoundingClientRect().top
                 scrollBtn.style.opacity = 1 - distance / window.innerHeight
                 if (getComputedStyle(scrollBtn).opacity > 0.8) {
@@ -27,7 +27,7 @@ export default function ScrollUpButton() {
                 }
             } else {
                 scrollBtn.style.opacity = 1
-                scrollBtn.style.position = "static"
+                // scrollBtn.style.position = "static"
             }
         }, 100)
         reduceScrollBtnOpacity()
@@ -41,7 +41,7 @@ export default function ScrollUpButton() {
     }, [scrollBtnRef, location])
 
     return (
-        <button className="anfahrt--scrollUpBtn"
+        <button className="scrollUpBtn"
             ref={scrollBtnRef}
             onClick={() => {
                 if (location !== "/") {
@@ -55,7 +55,7 @@ export default function ScrollUpButton() {
             }}
         >
             <svg
-                className="anfahrt--scrollUpBtn--svg"
+                className="scrollUpBtn--svg"
                 width="24"
                 height="37"
                 viewBox="0 0 24 37"

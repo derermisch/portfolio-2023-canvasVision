@@ -47,7 +47,7 @@ export default function Infobox({ messageData }) {
                 <button className="nav--infoBox--button" onClick={showModal}>(mehr lesen)</button>
                 <dialog className="nav--infoBox--modalDialog" onClick={closeModalByClickingBackground} ref={modalRef}>
                     <div className="nav--infoBox--modalDialog--container">
-                        <div className="nav--infoBox--modalDialog--container--text">
+                        <div className="nav--infoBox--modalDialog--container--text portableTextContainer">
                             <PortableText
                                 className={"nav--infoBox--modalDialog--container--text"}
                                 value={messageData.infoMessageLong}
@@ -59,6 +59,7 @@ export default function Infobox({ messageData }) {
                     </div>
                 </dialog>
             </div>
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

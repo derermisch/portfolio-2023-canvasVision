@@ -75,6 +75,7 @@ export default function Navlinks({ navlinkData, lan, showHamburgerContainer = tr
             >
                 {generateImgButtons()}
             </MakeAutomaticNavbar>
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

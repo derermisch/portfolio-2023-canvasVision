@@ -15,7 +15,7 @@ export default function AboutMeEntry({ imgUrl, heading, text, socialLinks, lan }
         <div className="aboutMe--entries--entry--rightContainer">
             <div className="aboutMe--entries--entry--rightContainer--textContainer">
                 {heading && <h2 className="aboutMe--entries--entry--rightContainer--textContainer--heading">{heading[lan]}</h2>}
-                {text && <div className="aboutMe--entries--entry--rightContainer--textContainer--text">
+                {text && <div className="aboutMe--entries--entry--rightContainer--textContainer--text portableTextContainer">
                     <PortableText value={text[lan].blockContent} />
                 </div>}
             </div>

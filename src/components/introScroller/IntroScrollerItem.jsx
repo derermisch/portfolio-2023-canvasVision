@@ -100,6 +100,7 @@ export default function IntroScrollerItem({ lan, introButtons = false, introScro
                     </div>
                 }
             </div >
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

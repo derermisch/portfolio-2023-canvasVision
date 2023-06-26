@@ -33,7 +33,7 @@ export default function AppWrapper() {
     useEffect(() => {
         const onContentLoaded = () => {
             setAllLoaded(() => true)
-            // window.scrollTo({top: 0, behavior: "instant"})
+            window.scrollTo({ top: 0, behavior: "instant" })
         }
 
         window.addEventListener("contentLoaded", onContentLoaded)
@@ -50,7 +50,8 @@ export default function AppWrapper() {
     return (
         <>
             {!allLoaded && <div className="loaderWrapper">
-                <ClipLoader className="loaderWrapper--loader" />
+                <ClipLoader
+                    className="loaderWrapper--loader clipLoader" />
             </div>}
             <App />
             {/* {allLoaded && <CanvasBackground/>} */}

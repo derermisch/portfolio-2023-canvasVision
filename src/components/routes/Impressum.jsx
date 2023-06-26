@@ -11,7 +11,7 @@ export default function Impressum({ text, lan }) {
                 <Navbar />
                 <h2 className="impressum--heading">{lan === 0 ? "Impressum" : "Legal notice"}</h2>
                 {lan > 0 && <p className="impressum--lanDisclaimer">(There is only a german version of this text available)</p>}
-                <article className="impressum--textContainer">
+                <article className="impressum--textContainer portableTextContainer">
                     <PortableText
                         // value={lan === 0 ? text.text_de : text.text_en}
                         value={text.text_de}
@@ -20,6 +20,7 @@ export default function Impressum({ text, lan }) {
                     />
                 </article>
             </section>
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

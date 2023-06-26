@@ -12,5 +12,6 @@ export default function HeroSectionLeft({ heroLeft, lan }) {
                 {heroLeft.callToActionBtnLeft[lan]}
             </button>
         </div>
-        : <ClipLoader />
+        : <ClipLoader
+            className="clipLoader" />
 }

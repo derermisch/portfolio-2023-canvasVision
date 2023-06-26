@@ -26,7 +26,7 @@ export default function Contact() {
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">
-            <Spacer targetElementClassName=".contact" />
+            <Spacer targetElementClassName=".contact"/>
         </DataSource>
     </>
     )

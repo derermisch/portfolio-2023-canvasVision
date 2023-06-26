@@ -279,6 +279,56 @@ img {
   }
 }
 
+.scrollUpButtonStatic {
+  position: absolute;
+  right: 3rem;
+  background-color: var(--background) !important;
+  width: 64px;
+  height: 64px;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.scrollUpButtonStatic--svg {
+  width: 32px;
+  height: 32px;
+  transform: rotate(180deg);
+  stroke: var(--foreground);
+}
+.scrollUpButtonStatic--svg > path {
+  fill: var(--foreground);
+}
+
+@media (max-width: 600px) {
+  .scrollUpButtonStatic {
+    position: relative;
+    right: unset;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+  }
+  .scrollUpButtonStatic--svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+.portableTextContainer > * {
+  font-size: clamp(0.9rem, 0.5vw + 0.5rem, 2rem);
+}
+.portableTextContainer > * > * {
+  font-size: clamp(0.9rem, 0.5vw + 0.5rem, 2rem);
+  padding: unset !important;
+  background-color: unset !important;
+}
+
+.clipLoader {
+  width: 35px;
+  height: 35px;
+  flex: unset !important;
+  padding: unset !important;
+}
+
 .hamburgerContainer {
   background-color: transparent;
   border: none;
@@ -1337,14 +1387,14 @@ img {
     align-items: flex-start;
   }
 }
-.anfahrt--scrollUpBtn {
+.scrollUpBtn {
   opacity: 1;
   border: none;
   position: sticky;
   z-index: 5;
-  bottom: 3vh;
+  bottom: 10%;
   background-color: var(--background);
-  transform: translateX(calc(100vw - 64px - 6rem)) translateY(32px);
+  transform: translateX(calc(100vw - 64px - 6rem)) translateY(64px);
   width: 64px;
   height: 64px;
   padding: 1rem;
@@ -1352,18 +1402,18 @@ img {
   cursor: pointer;
 }
 
-.anfahrt--scrollUpBtn--svg {
+.scrollUpBtn--svg {
   width: 32px;
   height: 32px;
   transform: rotate(180deg);
   stroke: var(--foreground);
 }
-.anfahrt--scrollUpBtn--svg > path {
+.scrollUpBtn--svg > path {
   fill: var(--foreground);
 }
 
 @media (max-width: 600px) {
-  .anfahrt--scrollUpBtn {
+  .scrollUpBtn {
     position: static;
     transform: translateX(calc(50vw - 32px)) translateY(32px);
   }
@@ -1445,7 +1495,7 @@ img {
   width: 100%;
   height: 100vh;
   background-color: white;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;

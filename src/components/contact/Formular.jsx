@@ -125,6 +125,7 @@ export default function Formular({ dataForForm }) {
                     </button>
                 </div>
             </form>
-            : <ClipLoader />
+            : <ClipLoader 
+ className="clipLoader"/>
     )
 }

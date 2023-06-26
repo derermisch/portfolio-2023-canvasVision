@@ -19,7 +19,8 @@ export default function ProjectHero({ projectsHeroData, lan }) {
                 <path d="M31.072 10.048C30.816 10.336 30.72 11.584 30.784 13.6C30.848 16.16 30.976 16.8 31.456 17.088C31.84 17.344 32.16 17.344 32.576 17.088C33.024 16.8 33.152 16.16 33.216 13.6C33.312 10.368 33.088 9.59997 32 9.59997C31.68 9.59997 31.264 9.79197 31.072 10.048Z" fill="#EFE9E7" />
                 <path className="projects--heroSection--textContainer--scrollSvg--arrow scrollSvg--arrow" d="M20.896 50.944C20.704 51.168 20.48 51.552 20.32 51.776C20.032 52.288 31.2 63.68 32 63.68C32.256 63.68 34.976 61.184 38.016 58.144C43.712 52.448 44.256 51.616 42.848 50.848C42.208 50.528 41.728 50.944 37.088 55.552L32 60.64L26.944 55.584C24.192 52.832 21.76 50.56 21.568 50.56C21.344 50.56 21.056 50.752 20.896 50.944Z" fill="#2B50AA" />
             </svg>
-        </div> : <ClipLoader />}
+        </div> : <ClipLoader 
+ className="clipLoader"/>}
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">
