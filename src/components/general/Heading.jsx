@@ -10,7 +10,7 @@ export default function Heading({ headingArr, className }) {
 
     return (
         headingArr ?
-            <h1 className={className}>{headingArr[value]}</h1>
+            <h2 className={className}>{headingArr[value]}</h2>
             : <ClipLoader 
  className="clipLoader"/>
     )

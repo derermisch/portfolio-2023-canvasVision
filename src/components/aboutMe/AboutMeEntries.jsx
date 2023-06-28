@@ -15,6 +15,6 @@ export default function AboutMeEntries({ aboutMeEntries, lan }) {
                 />
             })}
         </section>
-        : <ClipLoader 
- className="clipLoader"/>
+        : <ClipLoader
+            className="clipLoader" />
 } 

@@ -74,9 +74,9 @@ export default function IntroScrollerItem({ lan, introButtons = false, introScro
     return (
         introScrollData ?
             <div className="introScroller--item" ref={textRef}>
-                <h1 className="introScroller--item--heading" ref={headingRef}>
+                <h2 className="introScroller--item--heading" ref={headingRef}>
                     {introScrollData.heading1 ? introScrollData.heading1[lan] : introScrollData.heading2[lan]}
-                </h1>
+                </h2>
                 {introButtons &&
                     <div className="introScroller--item--buttons">
                         <Link

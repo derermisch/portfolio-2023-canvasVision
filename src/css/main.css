@@ -546,6 +546,10 @@ img {
   background-color: var(--clr-action);
   font-size: clamp(1.5rem, 1vw + 1rem, 6rem);
   color: var(--foreground);
+  transition: transform 200ms ease-in-out;
+}
+.home--heroSection--left--callToAction:focus, .home--heroSection--left--callToAction:hover {
+  transform: scale(1.1);
 }
 
 .home--heroSection--left--textContainer--heading {
@@ -1186,6 +1190,12 @@ img {
 }
 
 .aboutMe--entries--entry--rightContainer--linkContainer--socialLink {
+  width: 32px;
+  background-color: transparent;
+  padding: unset;
+}
+
+.aboutMe--entries--entry--rightContainer--linkContainer--socialLink--img {
   width: 32px;
 }
 

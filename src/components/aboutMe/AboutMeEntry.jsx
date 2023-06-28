@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import client from "../../client"
 import imageUrlBuilder from "@sanity/image-url"
 import { PortableText } from "@portabletext/react"
+import { MakeImgButton } from "../general/MakeImgButton"
 
 export default function AboutMeEntry({ imgUrl, heading, text, socialLinks, lan }) {
     const builder = imageUrlBuilder(client)
@@ -21,12 +22,17 @@ export default function AboutMeEntry({ imgUrl, heading, text, socialLinks, lan }
             </div>
             {socialLinks && <div className="aboutMe--entries--entry--rightContainer--linkContainer" ref={containerRef}>
                 {socialLinks.map((socialLink, i) => {
-                    return <img
+                    return <a
+                        href={socialLink.linkAddress}
                         className="aboutMe--entries--entry--rightContainer--linkContainer--socialLink"
                         key={i}
-                        src={builder.image(socialLink.iconUrl)}
-                        alt={socialLink.linkName[lan]}
-                    />
+                    >
+                        <img
+                            className="aboutMe--entries--entry--rightContainer--linkContainer--socialLink--img"
+                            src={builder.image(socialLink.iconUrl)}
+                            alt={socialLink.linkName[lan]}
+                        />
+                    </a>
                 })}
             </div>}
         </div>

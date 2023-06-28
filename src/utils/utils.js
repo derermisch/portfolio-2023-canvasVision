@@ -19,7 +19,7 @@ dispatchEvent(contentLoadedEvent)
 
 const startTimer = () => {
     timerId = setTimeout(() => {
-        console.log("Content loaded!");
+        // console.log("Content loaded!");
         dispatchEvent(contentLoadedEvent)
         contentLoaded = true
         previousHeight = innerHeight //to have an inital value

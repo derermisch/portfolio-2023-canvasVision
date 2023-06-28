@@ -33,6 +33,12 @@
         background-color: var(--clr-action);
         font-size: $Fs-h2;
         color: var(--foreground);
+        transition: transform 200ms ease-in-out;
+    }
+
+    &--callToAction:focus,
+    &--callToAction:hover {
+        transform: scale(1.1);
     }
 }
 

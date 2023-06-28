@@ -161,7 +161,7 @@ export default function Services() {
 
     return (<>
         <section className="services site" id="services" ref={setPageRef}>
-            <h1 className="services--heading" ref={headingRef}>Services</h1>
+            <h2 className="services--heading" ref={headingRef}>Services</h2>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" ref={setRefs} className="services--line">
                 <line className="services--line--main" x1="50" y1="0" x2="50" y2="100" stroke="black" />
                 <line className="services--line--loading" x1="50" y1="0" x2="50" y2="100" stroke="black" />

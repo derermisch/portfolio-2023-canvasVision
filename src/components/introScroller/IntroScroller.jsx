@@ -10,7 +10,7 @@ export default function IntroScroller() {
     const value = useContext(SettingsContext).value
 
     return <>
-        <div className="introScroller site">
+        <section className="introScroller site">
             <DataSource
                 getDataFunc={getServerData('*[_type == "introScrollerSite"][0]{heading1}')}
                 resourceName="introScrollData">
@@ -21,7 +21,7 @@ export default function IntroScroller() {
                 resourceName="introScrollData">
                 <IntroScrollerItem lan={value} introButtons={true} />
             </DataSource>
-        </div>
+        </section>
         {/* <BackgroundCanvas targetElementClassName=".introScroller" shape="90deg_down" zoom={.7} /> */}
         <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}

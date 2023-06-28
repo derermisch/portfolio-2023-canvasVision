@@ -14,7 +14,7 @@ export default function AboutMe() {
         <main className="aboutMe site">
             <Navbar />
             <DataSource
-                getDataFunc={getServerData('*[_type == "aboutMe"][0].aboutMeEntries[]{"imgUrl": img.asset->url, heading, text, socialLinks[]{linkName, "iconUrl": iconPng.asset->url}}')}
+                getDataFunc={getServerData('*[_type == "aboutMe"][0].aboutMeEntries[]{"imgUrl": img.asset->url, heading, text, socialLinks[]{linkName, linkAddress, "iconUrl": iconPng.asset->url}}')}
                 resourceName="aboutMeEntries"
             >
                 <AboutMeEntries lan={value} />

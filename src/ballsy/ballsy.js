@@ -18,7 +18,7 @@ import "./sounds"
 
 // -- References --
 /** @type {HTMLCanvasElement} */
-const canvas = document.getElementById("canvas")
+const canvas = document.getElementById("ballsyCanvas")
 const ctx = canvas.getContext("2d")
 const cam = new Camera(ctx, { distance: 2000 }) // 2000 is good
 

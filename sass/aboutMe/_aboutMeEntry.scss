@@ -56,6 +56,14 @@
 .aboutMe--entries--entry--rightContainer--linkContainer {
     &--socialLink {
         width: 32px;
+        background-color: transparent;
+        padding: unset;
+    }
+}
+
+.aboutMe--entries--entry--rightContainer--linkContainer--socialLink {
+    &--img {
+        width: 32px;
     }
 }
 
