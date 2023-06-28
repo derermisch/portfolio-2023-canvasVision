@@ -29,8 +29,12 @@ export default defineType({
     ],
 
     preview: {
-        prepare() {
-            return { title: "(Doppelklick)" }
+        select: {
+            title: "route"
+        },
+        prepare(selection) {
+            const { title } = selection
+            return { title: title }
         }
     },
 })

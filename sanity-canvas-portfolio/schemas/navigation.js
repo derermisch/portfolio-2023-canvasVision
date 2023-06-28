@@ -14,8 +14,8 @@ export default defineType({
     ],
 
     preview: {
-        select: {
-            title: 'heading',
-        },
+        prepare() {
+            return { title: "Navigation" }
+        }
     },
 })

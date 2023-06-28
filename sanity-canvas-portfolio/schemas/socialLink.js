@@ -16,11 +16,16 @@ export default defineType({
             title: 'Icon',
             type: 'image',
         }),
+        defineField({
+            name: 'linkAddress',
+            title: 'Link Addresse',
+            type: 'string',
+        }),
     ],
 
     preview: {
         prepare() {
-            return { title: "(Doppelklick)" }
+            return { title: "Social link" }
         }
     },
 })

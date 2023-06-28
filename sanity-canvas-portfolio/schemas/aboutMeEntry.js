@@ -30,9 +30,9 @@ export default defineType({
         }),
     ],
 
-    preview: {
-        prepare() {
-            return { title: "(Doppelklick)" }
-        }
-    },
+    // preview: {
+    //     prepare() {
+    //         return { title: "(Doppelklick)" }
+    //     }
+    // },
 })
