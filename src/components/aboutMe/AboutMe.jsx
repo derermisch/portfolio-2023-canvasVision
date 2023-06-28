@@ -1,6 +1,5 @@
 import { useContext } from "react";
 
-import AboutMeEntry from "./AboutMeEntry";
 import { DataSource, getServerData } from "../general/DataSource";
 import { SettingsContext } from "../general/SettingsContext";
 import AboutMeEntries from "./AboutMeEntries";

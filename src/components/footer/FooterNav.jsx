@@ -1,5 +1,3 @@
-import { MakeImgButton } from "../general/MakeImgButton"
-import { scrollToLocation } from "../../utils/utils"
 import { Link } from "react-router-dom"
 import Navlinks from "../navbar/Navlinks"
 

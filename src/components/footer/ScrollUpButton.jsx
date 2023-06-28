@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useLocation } from "react-router-dom"
 
 import { determineIfMobile, scrollToLocation, throttle } from "../../utils/utils"

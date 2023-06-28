@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState, forwardRef } from "react"
+import { useEffect, useRef } from "react"
 import { ClipLoader } from "react-spinners"
+
 import { getCurrentLightMode } from "../../utils/darkmode"
-import useResizeObserver from "use-resize-observer";
+
 // svg-code from https://app.haikei.app/. Dimensions: 1000 x 100
 export default function Spacer({ spacerRes, targetElementClassName = null, showLower = true }) {
     const containerRef = useRef(null)
@@ -78,6 +79,6 @@ export default function Spacer({ spacerRes, targetElementClassName = null, showL
             <div className="spacer--upper"></div>
             <div className="spacer--lower"></div>
         </div>
-        : <ClipLoader 
- className="clipLoader"/>
+        : <ClipLoader
+            className="clipLoader" />
 }

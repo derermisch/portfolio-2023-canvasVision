@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-import { useInView } from "react-intersection-observer"
-import Typewriter from 'typewriter-effect';
-import { ClipLoader } from "react-spinners"
 import { useRef } from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useInView } from "react-intersection-observer"
+import { ClipLoader } from "react-spinners"
 
 export default function IntroScrollerItem({ lan, introButtons = false, introScrollData }) {
     const { ref: textRef, inView, entry } = useInView({
@@ -100,7 +98,7 @@ export default function IntroScrollerItem({ lan, introButtons = false, introScro
                     </div>
                 }
             </div >
-            : <ClipLoader 
- className="clipLoader"/>
+            : <ClipLoader
+                className="clipLoader" />
     )
 }

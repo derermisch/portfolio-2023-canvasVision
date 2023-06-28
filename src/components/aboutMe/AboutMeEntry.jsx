@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react"
 import client from "../../client"
 import imageUrlBuilder from "@sanity/image-url"
 import { PortableText } from "@portabletext/react"
-import { MakeImgButton } from "../general/MakeImgButton"
 
 export default function AboutMeEntry({ imgUrl, heading, text, socialLinks, lan }) {
     const builder = imageUrlBuilder(client)

@@ -5,7 +5,7 @@ import { SettingsContext } from "../general/SettingsContext"
 import Navbar from "../navbar/Navbar"
 import HeroSection from "./HeroSection"
 import Spacer from "../general/Spacer"
-import BackgroundCanvas from "../general/BackgroundCanvas"
+// import BackgroundCanvas from "../general/BackgroundCanvas"
 
 export default function Home() {
     const value = useContext(SettingsContext).value

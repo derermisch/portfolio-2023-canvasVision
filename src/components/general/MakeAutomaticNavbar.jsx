@@ -1,5 +1,5 @@
-import React, { useLayoutEffect, useRef, useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
+import React, { useLayoutEffect, useRef } from "react"
+import { useLocation } from "react-router-dom"
 
 export default function MakeAutomaticNavbar({
     children,

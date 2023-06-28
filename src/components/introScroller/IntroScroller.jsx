@@ -1,10 +1,10 @@
+import { useContext } from "react";
+
 import IntroScrollerItem from "./IntroScrollerItem";
-import BackgroundCanvas from "../general/BackgroundCanvas"
+// import BackgroundCanvas from "../general/BackgroundCanvas"
 import { DataSource, getServerData } from "../general/DataSource";
 import Spacer from "../general/Spacer";
-import { useContext } from "react";
 import { SettingsContext } from "../general/SettingsContext"
-import { useRef } from "react";
 
 export default function IntroScroller() {
     const value = useContext(SettingsContext).value

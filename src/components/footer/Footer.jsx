@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
-import ClipLoader from "react-spinners/ClipLoader"
 
-import ScrollUpButton from "./ScrollUpButton"
 import ScrollUpButtonStatic from "../general/ScrollUpButtonStatic"
 import FooterNav from "./FooterNav"
 import FooterLegal from "./FooterLegal"

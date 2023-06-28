@@ -1,5 +1,6 @@
-import AboutMeEntry from "./AboutMeEntry"
 import { ClipLoader } from "react-spinners"
+
+import AboutMeEntry from "./AboutMeEntry"
 
 export default function AboutMeEntries({ aboutMeEntries, lan }) {
     return aboutMeEntries ?

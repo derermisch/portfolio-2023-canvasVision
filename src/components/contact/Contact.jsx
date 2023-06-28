@@ -1,7 +1,7 @@
 import { DataSource, getServerData } from "../general/DataSource"
 import Formular from "./Formular"
 import Heading from "../general/Heading"
-import BackgroundCanvas from "../general/BackgroundCanvas"
+// import BackgroundCanvas from "../general/BackgroundCanvas"
 import Spacer from "../general/Spacer"
 
 export default function Contact() {

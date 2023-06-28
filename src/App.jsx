@@ -1,7 +1,5 @@
 import { Routes, Route } from "react-router-dom"
 import { useEffect, useMemo, useState } from "react"
-import client from "./client"
-import imgUrlBuilder from "@sanity/image-url"
 
 import { DataSource, getServerData } from "./components/general/DataSource"
 import Sites from "./components/routes/Sites"
