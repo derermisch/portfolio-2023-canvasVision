@@ -10,7 +10,7 @@ import { SettingsContext } from "./components/general/SettingsContext"
 import { getCurrentLanguage } from "./utils/language"
 import { setCurrentLightMode } from "./utils/darkmode"
 import Footer from "./components/footer/Footer"
-import AboutMe from "./components/aboutMe/aboutMe"
+import AboutMe from "./components/aboutMe/AboutMe"
 import Projects from "./components/projects/Projects"
 
 export default function App() {
