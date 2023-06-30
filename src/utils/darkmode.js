@@ -2,7 +2,9 @@
 export const getCurrentLightMode = () => {
     // If there is a lightMode stored, return it
     let currentLightMode = localStorage.getItem('currentLightMode');
-    if (currentLightMode) return currentLightMode
+
+    // next line is commented, to always use darkmode for this project
+    // if (currentLightMode) return currentLightMode 
 
     // If not use dark mode (this could be changed to using system preferences)
     currentLightMode = "dark"
