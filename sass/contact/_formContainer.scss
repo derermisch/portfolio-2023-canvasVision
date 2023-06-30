@@ -25,6 +25,11 @@
             font-style: italic;
         }
 
+        &::selection {
+            color: var(--clr-action);
+            background-color: var(--background);
+        }
+
         &:focus {
             outline: none;
             border-style: dotted;

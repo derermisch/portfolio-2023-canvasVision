@@ -2,9 +2,9 @@
 :root {
   --clr-primary: #272727;
   --clr-secondary: #EFE9E7;
-  --clr-action: #A52422;
-  --clr-grad-one: #00A878;
-  --clr-grad-two: #5603AD;
+  --clr-action: #13C4A3;
+  --clr-grad-one: #3E92CC;
+  --clr-grad-two: #13293D;
   --foreground: var(--clr-primary);
   --background: var(--clr-secondary);
   --gradient-one: var(--clr-grad-one);
@@ -91,7 +91,7 @@ textarea {
   font-family: "Lekton", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: var(--foreground);
+  color: var(--background);
   background-color: var(--background);
 }
 
@@ -148,7 +148,7 @@ img {
   align-items: center;
   flex-direction: column;
   background-color: var(--background);
-  background-image: linear-gradient(var(--gradient-one) 5%, var(--gradient-two) 25%, var(--background));
+  background-image: linear-gradient(var(--gradient-one) 5%, var(--gradient-two) 35%, var(--background));
 }
 
 @media (max-width: 600px) {
@@ -545,7 +545,7 @@ img {
   margin-top: 2rem;
   background-color: var(--clr-action);
   font-size: clamp(1.5rem, 1vw + 1rem, 6rem);
-  color: var(--foreground);
+  color: var(--background);
   transition: transform 200ms ease-in-out;
 }
 .home--heroSection--left--callToAction:focus, .home--heroSection--left--callToAction:hover {
@@ -1276,6 +1276,15 @@ img {
 .contact--form > input::placeholder,
 .contact--form > textarea::placeholder {
   font-style: italic;
+}
+.contact--form > input::-moz-selection, .contact--form > textarea::-moz-selection {
+  color: var(--clr-action);
+  background-color: var(--background);
+}
+.contact--form > input::selection,
+.contact--form > textarea::selection {
+  color: var(--clr-action);
+  background-color: var(--background);
 }
 .contact--form > input:focus,
 .contact--form > textarea:focus {

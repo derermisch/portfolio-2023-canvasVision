@@ -82,7 +82,7 @@ export default function Formular({ dataForForm }) {
                     name="name"
                     type="text"
                     className="contact--form--nameField"
-                    placeholder="Name*"
+                    placeholder={`${dataForForm.name[value]}*`}
                     value={formData.name}
                     onChange={updateFormData}
                     ref={ref}
@@ -96,7 +96,7 @@ export default function Formular({ dataForForm }) {
                     name="email"
                     type="email"
                     className="contact--form--emailField"
-                    placeholder="E-Mail Adresse*"
+                    placeholder={`${dataForForm.email[value]}*`}
                     value={formData.email}
                     onChange={updateFormData}
                     required
@@ -108,7 +108,7 @@ export default function Formular({ dataForForm }) {
                     id="nachricht"
                     name="nachricht"
                     className="contact--form--messageLabel"
-                    placeholder="Nachricht*"
+                    placeholder={`${dataForForm.message[value]}*`}
                     onChange={updateFormData}
                     value={formData.nachricht}
                     maxLength="1500"
