@@ -41,12 +41,6 @@ h4 {
   font-size: clamp(1rem, 0.1vw + 1rem, 2rem);
 }
 
-p,
-a,
-button {
-  font-size: clamp(0.9rem, 0.5vw + 0.5rem, 2rem);
-}
-
 h1,
 h2,
 h3,
@@ -1509,6 +1503,24 @@ img {
   font-style: italic;
 }
 
+.formHandle {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  place-items: center;
+}
+.formHandle--message {
+  max-width: 60%;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 1vw + 1rem, 6rem) !important;
+}
+.formHandle--backLink {
+  background-color: transparent;
+  color: var(--foreground);
+  font-size: clamp(1.2rem, 0.4vw + 1rem, 4rem);
+}
+
 .loaderWrapper {
   position: fixed;
   width: 100%;
@@ -1545,6 +1557,7 @@ img {
 
 .gameBtn {
   background-color: white;
+  color: black;
   font-size: larger;
   border: 0.6vw solid black;
   cursor: pointer;

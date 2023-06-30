@@ -11,6 +11,7 @@ export default function Spacer({ spacerRes, targetElementClassName = null, showL
         if (!containerRef.current) return
         if (!spacerRes) return
         if (!targetElementClassName) return
+        if (!document.querySelector(targetElementClassName)) return
 
         let myTargetRect = document.querySelector(targetElementClassName).getBoundingClientRect()
 

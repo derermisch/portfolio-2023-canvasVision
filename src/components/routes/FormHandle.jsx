@@ -19,7 +19,7 @@ export default function FormHandle({ requestInfo, lan }) {
 
                     </div>
                 }
-                <Link className="formHandle--backLink" to={"/"}>Zurück zur Startseite</Link>
+                <Link className="formHandle--backLink" to={"/"}>{lan === 0 ? "Zurück zur Startseite" : "Back to home"}</Link>
             </section>
             : <ClipLoader 
  className="clipLoader"/>
