@@ -1348,10 +1348,12 @@ img {
 }
 .contact--form > input::-moz-placeholder, .contact--form > textarea::-moz-placeholder {
   font-style: italic;
+  color: var(--foreground);
 }
 .contact--form > input::placeholder,
 .contact--form > textarea::placeholder {
   font-style: italic;
+  color: var(--foreground);
 }
 .contact--form > input::-moz-selection, .contact--form > textarea::-moz-selection {
   color: var(--clr-action);

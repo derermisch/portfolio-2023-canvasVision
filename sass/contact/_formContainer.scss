@@ -23,6 +23,7 @@
 
         &::placeholder {
             font-style: italic;
+            color: var(--foreground);
         }
 
         &::selection {
