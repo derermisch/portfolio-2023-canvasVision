@@ -162,6 +162,11 @@ img {
 .datenschutz--heading {
   margin-block: 2rem;
 }
+.impressum--textContainer,
+.datenschutz--textContainer {
+  max-width: 100%;
+  overflow-x: scroll;
+}
 .impressum--lanDisclaimer,
 .datenschutz--lanDisclaimer {
   margin-bottom: 2rem;

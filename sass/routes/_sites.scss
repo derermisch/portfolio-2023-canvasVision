@@ -16,11 +16,16 @@
     padding-block: $Sites-PaddingBlock;
     padding-inline: $Sites-PaddingInline;
     min-height: 100vh;
-
+    
     &--heading {
         margin-block: 2rem;
     }
 
+    &--textContainer {
+        max-width: 100%;
+        overflow-x: scroll;
+    }
+    
     &--lanDisclaimer {
         margin-bottom: 2rem;
         font-style: italic;
