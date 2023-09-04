@@ -20,7 +20,7 @@ export default function Impressum({ text, lan }) {
                     />
                 </article>
             </section>
-            : <ClipLoader 
- className="clipLoader"/>
+            : <ClipLoader
+                className="clipLoader" />
     )
 }

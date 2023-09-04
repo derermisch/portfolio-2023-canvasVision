@@ -23,10 +23,10 @@ export default function IntroScroller() {
             </DataSource>
         </section>
         {/* <BackgroundCanvas targetElementClassName=".introScroller" shape="90deg_down" zoom={.7} /> */}
-        <DataSource
+        {/* <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">
             <Spacer targetElementClassName=".introScroller" />
-        </DataSource>
+        </DataSource> */}
     </>
 }

@@ -1,7 +1,5 @@
 import ProjectItem from "./ProjectItem"
 import { ClipLoader } from "react-spinners";
-import { DataSource, getServerData } from "../general/DataSource";
-import Spacer from "../general/Spacer";
 
 export default function ProjectItemContainer({ projectData, lan }) {
     return <>{projectData ?
@@ -20,12 +18,7 @@ export default function ProjectItemContainer({ projectData, lan }) {
                     callToActionLink={projectItem.callToActionLink}
                 />
             })}
-        </section> : <ClipLoader 
- className="clipLoader"/>}
-        <DataSource
-            getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
-            resourceName="spacerRes">
-            <Spacer targetElementClassName=".projects--projectItemContainer" />
-        </DataSource>
+        </section> : <ClipLoader
+            className="clipLoader" />}
     </>
 }

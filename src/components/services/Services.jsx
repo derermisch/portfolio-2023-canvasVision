@@ -185,11 +185,11 @@ export default function Services() {
             </DataSource>
         </section>
         {/* <BackgroundCanvas targetElementClassName=".services" shape="90deg_up" /> */}
-        <DataSource
+        {/* <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">
             <Spacer targetElementClassName=".services" />
-        </DataSource>
+        </DataSource> */}
     </>
     )
 }

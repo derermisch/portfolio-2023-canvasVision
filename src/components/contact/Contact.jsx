@@ -23,11 +23,11 @@ export default function Contact() {
             </DataSource>
         </section>
         {/* <BackgroundCanvas targetElementClassName=".contact" /> */}
-        <DataSource
+        {/* <DataSource
             getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
             resourceName="spacerRes">
             <Spacer targetElementClassName=".contact"/>
-        </DataSource>
+        </DataSource> */}
     </>
     )
 }

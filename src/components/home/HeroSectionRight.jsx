@@ -261,11 +261,12 @@ export default function HeroSectionRight({ heroRight, lan }) {
         //     {/* <canvas className="home--heroSection--right--canvas" ref={canvasRef}></canvas> */}
         // </div>
         <div className="home--heroSection--right">
-            <img className="home--heroSection--right--img" src={builder.image(heroRight.imgUrl).width(800).height(800)} alt="Myself"/>
+            {/* <img className="home--heroSection--right--img" src={builder.image(heroRight.imgUrl).width(800).height(800)} alt="Myself"/> */}
+            <div className="home--heroSection--right--img" style={{ backgroundImage: `url(${builder.image(heroRight.imgUrl).width(800).height(800)})` }} alt="Myself" />
             {/* <img className="home--heroSection--right--img" src={builder.image(heroRight.imgUrl).width(800).height(800)} alt="myself" /> */}
         </div>
     ) : (
-        <ClipLoader 
- className="clipLoader"/>
+        <ClipLoader
+            className="clipLoader" />
     )
 }

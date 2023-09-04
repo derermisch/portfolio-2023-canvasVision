@@ -4,7 +4,6 @@ import { DataSource, getServerData } from "../general/DataSource";
 import { SettingsContext } from "../general/SettingsContext";
 import AboutMeEntries from "./AboutMeEntries";
 import Navbar from "../navbar/Navbar"
-import Spacer from "../general/Spacer";
 
 export default function AboutMe() {
     const value = useContext(SettingsContext).value
@@ -19,10 +18,5 @@ export default function AboutMe() {
                 <AboutMeEntries lan={value} />
             </DataSource>
         </main>
-        <DataSource
-            getDataFunc={getServerData('*[_type == "other"][0]{spacerSvgCode}')}
-            resourceName="spacerRes">
-            <Spacer targetElementClassName=".aboutMe" />
-        </DataSource>
     </>
 }

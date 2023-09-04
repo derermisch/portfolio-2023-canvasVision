@@ -1,23 +1,38 @@
-.sites>* {
+.sites>*,
+.site,
+.impressum,
+.datenschutz {
     padding-block: $Sites-PaddingBlock;
     padding-inline: $Sites-PaddingInline;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include flexIt($dir: column, $justCont: center, $alignIt: center);
 }
 
-.site {
-    @include flexIt($dir: column, $justCont: center, $alignIt: center);
-    background-color: var(--background);
-    $thickness: 5%;
-    $multiplier: 7;
-    background-image:
-        linear-gradient(var(--gradient-one) $thickness,
-            var(--gradient-two) calc($thickness * $multiplier),
-            var(--background));
+.impressum,
+.datenschutz {
+    @include flexIt($dir: column, $alignIt: flex-start, $justCont: flex-start);
+    padding-block: $Sites-PaddingBlock;
+    padding-inline: $Sites-PaddingInline;
+    min-height: 100vh;
+
+    &--heading {
+        margin-block: 2rem;
+    }
+
+    &--lanDisclaimer {
+        margin-bottom: 2rem;
+        font-style: italic;
+    }
 }
 
 @include for-phone {
 
     .sites>*,
-    .site {
+    .site,
+    .impressum,
+    .datenschutz {
         padding-block: $Sites-PaddingBlock-Mobile;
         padding-inline: $Sites-PaddingInline-Mobile;
     }

@@ -10,6 +10,17 @@ export default defineType({
             title: 'Spacer svg code',
             type: 'string',
         }),
+        defineField({
+            name: "spacerImg",
+            title: "Spacer Image",
+            type: "image"
+        }),
+        defineField({
+            name: 'backgroundImages',
+            title: 'Background Images',
+            type: 'array',
+            of: [{ type: "image" }],
+        }),
     ],
 
     preview: {

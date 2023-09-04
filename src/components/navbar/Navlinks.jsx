@@ -1,6 +1,5 @@
 import ClipLoader from "react-spinners/ClipLoader"
 import { HashLink as Link } from 'react-router-hash-link';
-
 import { MakeImgButton } from "../general/MakeImgButton"
 import MakeAutomaticNavbar from "../general/MakeAutomaticNavbar"
 
@@ -37,7 +36,18 @@ export default function Navlinks({ navlinkData, lan, showHamburgerContainer = tr
             else if (navlinkData[i].route) { // Link to route
                 imgButtons.push(
                     <MakeImgButton key={i} route={navlinkData[i].route}>
-                        <Link to={`${navlinkData[i].route}`} className={`${providedClassName}--links--link`} onClick={() => toggleNavMenu()}>
+                        <Link
+                            className={`${providedClassName}--links--link`}
+                            smooth to={`${navlinkData[i].route}`}
+                            onClick={() => toggleNavMenu()}
+                            scroll={(el) => {
+                                // in this case, we have to wait a bit because of dynamic site height
+                                setTimeout(() => {
+                                    el.scrollIntoView({ behavior: "smooth" })
+                                }, 100)
+                            }
+                            }
+                        >
                             {navlinkData[i].navlink[lan]}
                         </Link>
                     </MakeImgButton>
@@ -75,7 +85,7 @@ export default function Navlinks({ navlinkData, lan, showHamburgerContainer = tr
             >
                 {generateImgButtons()}
             </MakeAutomaticNavbar>
-            : <ClipLoader 
- className="clipLoader"/>
+            : <ClipLoader
+                className="clipLoader" />
     )
 }

@@ -1,3 +1,9 @@
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
 .home--heroSection {
     // background-color: red;
     width: 100%;
@@ -7,7 +13,7 @@
     padding-block: $Sites-PaddingBlock;
 
     >* {
-         flex: 1;
+        flex: 1;
     }
 
     &--left {
@@ -17,6 +23,8 @@
 
     &--right {
         // background-color: aqua;
+        width: 100%;
+        z-index: 1;
         @include flexIt($dir: row, $justCont: center, $alignIt: center);
     }
 }
@@ -64,19 +72,57 @@
     }
 
     &--img {
+        // border: 5px solid var(--foreground);
+        // border-style: ridge;
         background-size: cover;
         background-position: center center;
-        width: 60%;
+        width: 50%;
         border-radius: 30% 5%;
         aspect-ratio: 1 / 1;
         // animation: imgWobble 2s ease-in-out infinite alternate;
         // https://9elements.github.io/fancy-border-radius/full-control.html#26.21.26.30-42.55.56.75-.
         // border-radius: 30% 5%;
         transition: border-radius 1s ease-in-out;
+        position: relative;
+        background-position: center;
+        background-size: contain;
+    }
+
+    &--img::before,
+    &--img::after {
+        position: absolute;
+        inset: -4px;
+        z-index: -1;
+        content: "";
+        background: conic-gradient(from var(--gradient-angle),
+                var(--foreground),
+                var(--background),
+                var(--clr-action),
+                var(--background),
+                var(--foreground),
+            );
+        border-radius: inherit;
+        animation: rotateBorder 10s linear infinite;
+        transition: background 500ms infinite;
+        isolation: isolate;
+    }
+
+    &--img::after {
+        filter: blur(.2rem);
     }
 
     &--img:hover {
         border-radius: 5% 30%;
+    }
+
+    @keyframes rotateBorder {
+        0% {
+            --gradient-angle: 0deg;
+        }
+
+        100% {
+            --gradient-angle: 360deg;
+        }
     }
 
     @keyframes imgWobble {
@@ -181,7 +227,7 @@
 }
 
 @include for-small-height {
-    .home--heroSection{
+    .home--heroSection {
         gap: 2rem;
     }
 
@@ -202,6 +248,7 @@
             font-size: $Fs-p;
         }
     }
+
     .home--heroSection--right {
         &--img {
             width: 60%;
@@ -209,8 +256,8 @@
     }
 }
 
-@include for-phone-landscape{
-    .home--heroSection{
+@include for-phone-landscape {
+    .home--heroSection {
         gap: 2rem;
     }
 }

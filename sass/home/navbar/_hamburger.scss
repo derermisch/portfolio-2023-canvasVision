@@ -16,8 +16,8 @@ $hamburgerWidth: 40px;
     background-color: transparent;
     width: $hamburgerWidth;
     cursor: pointer;
-    stroke: var(--background);
-    fill: var(--background);
+    stroke: var(--foreground);
+    fill: var(--foreground);
 }
 
 .hamburger .line {
